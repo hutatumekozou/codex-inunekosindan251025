@@ -1,0 +1,86 @@
+name: 戦国武将診断
+options:
+  minimumXcodeGenVersion: 2.41.0
+targets:
+  戦国武将診断:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - 戦国武将診断
+    resources:
+      - path: Resources/assessments
+        type: folder
+    info:
+      path: 戦国武将診断/Info.plist
+      properties:
+        UILaunchScreen: {}
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: net.jp.apps.example.sengoku
+        TARGETED_DEVICE_FAMILY: 1
+        SWIFT_VERSION: 5.9
+        # User-Defined
+        DIAG_MIN_QUESTIONS: 3
+        ADS_ENABLED: NO
+    postCompileScripts:
+      - name: Validate Assessment Resources
+        script: |
+          set -euo pipefail
+          APP_RES="${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+          DIAG_MIN_QUESTIONS="${DIAG_MIN_QUESTIONS:-3}"
+          CANDIDATES=(
+            "${APP_RES}/assessments"
+            "${APP_RES}/Resources/assessments"
+          )
+          ADIR=""
+          for d in "${CANDIDATES[@]}"; do [ -d "$d" ] && { ADIR="$d"; break; }; done
+          if [ -z "$ADIR" ]; then
+            echo "[AS][WARN] assessments not found in app bundle, skipping validation"
+            echo "Candidates checked:"
+            for d in "${CANDIDATES[@]}"; do echo "  $d"; done
+            exit 0
+          fi
+          shopt -s nullglob
+          QFILES=( "${ADIR}"/diag_*_v*.json )
+          RFILES=( "${ADIR}"/diag_*_results.json )
+          [ ${#QFILES[@]} -ge 1 ] || { echo "[AS][ERR] 質問ファイルがありません"; exit 4; }
+          [ ${#RFILES[@]} -ge 1 ] || { echo "[AS][ERR] 結果ファイルがありません"; exit 5; }
+          if grep -rI -n $'\xE2\x80\x9C\|\xE2\x80\x9D\|\xE2\x80\x98\|\xE2\x80\x99' "${ADIR}" >/dev/null; then
+            echo "[AS][ERR] smart quotes detected"; exit 6; fi
+          for f in "${QFILES[@]}"; do
+            echo "[AS] Validate questions: $f"
+            /usr/bin/python3 - <<'PY' "$f" "$DIAG_MIN_QUESTIONS" || { echo "[AS][ERR] invalid questions JSON: $f"; exit 7; }
+          import json,sys
+          minc=int(sys.argv[2])
+          with open(sys.argv[1],'rb') as fp:
+              data=json.load(fp)
+          assert isinstance(data, dict) and "questions" in data, "questions配列がありません"
+          qs=data["questions"]
+          assert isinstance(qs, list) and len(qs) >= minc, f"質問数 {len(qs)} < 最低 {minc}"
+          for q in qs:
+              assert "choices" in q and len(q["choices"])>=2, "choices不足"
+              for c in q["choices"]:
+                  assert "weights" in c and isinstance(c["weights"], dict), "weights欠落"
+          print("[AS] OK questions count=", len(qs))
+          PY
+          done
+          for f in "${RFILES[@]}"; do
+            echo "[AS] Validate results: $f"
+            /usr/bin/python3 - <<'PY' "$f" || { echo "[AS][ERR] invalid results JSON: $f"; exit 8; }
+          import json,sys,re
+          with open(sys.argv[1],'rb') as fp:
+              data=json.load(fp)
+          assert isinstance(data, dict) and "profiles" in data, "profilesがありません"
+          profiles=data["profiles"]; assert isinstance(profiles, list) and len(profiles)>=1
+          for p in profiles:
+              assert "id" in p and "name" in p and "formula" in p, "必須キー不足"
+              assert re.match(r'^[0-9*+ IAPLJSC]+$', p["formula"].replace(' ','')), "formulaに無効文字"
+          print("[AS] OK profiles=", len(profiles))
+          PY
+          done
+        inputFiles:
+          - $(SRCROOT)/Resources/assessments
+          - $(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)
+        outputFiles:
+          - $(DERIVED_FILE_DIR)/validate_assessments.stamp

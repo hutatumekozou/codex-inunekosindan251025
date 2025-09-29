@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "meta": {
+    "title": "戦国武将診断",
+    "traits": ["I","A","P","L","J","S","C"],
+    "tiebreak": ["I","S","C","P","A","L","J"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "重要プロジェクトの初動は？",
+      "choices": [
+        {"key":"A","text":"型破りな案を試す","weights":{"I":2,"C":1}},
+        {"key":"B","text":"布陣を先に固める","weights":{"S":2,"P":1}},
+        {"key":"C","text":"人を巻き込んで走る","weights":{"C":2,"A":1}},
+        {"key":"D","text":"情報を集めて腰を据える","weights":{"P":2,"S":1}}
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "締切が迫ると？",
+      "choices": [
+        {"key":"A","text":"ギア上げて攻める","weights":{"A":2,"I":1}},
+        {"key":"B","text":"計画に沿って粛々","weights":{"P":2}},
+        {"key":"C","text":"最適配置で回す","weights":{"S":2,"C":1}},
+        {"key":"D","text":"要件を絞り込む","weights":{"S":1,"P":1}}
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "仲間が失敗したら？",
+      "choices": [
+        {"key":"A","text":"次の打ち手を一緒に設計","weights":{"S":1,"P":1}},
+        {"key":"B","text":"役割を付け替えて再挑戦","weights":{"C":1,"S":1}},
+        {"key":"C","text":"自分が前に出て巻き返す","weights":{"A":1,"C":1}},
+        {"key":"D","text":"筋を示しつつ庇う","weights":{"L":1,"J":1}}
+      ]
+    }
+  ],
+  "scoring": { "mode": "linear_sum" }
+}

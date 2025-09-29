@@ -1,0 +1,347 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		341FE99B57F8863F411C9E38 /* AssessmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6E39B031C727626BB1ADD3 /* AssessmentRepository.swift */; };
+		4189D8E625EFE82826A12D7D /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9C95D337F510B67A9C13B3 /* HomeScreen.swift */; };
+		49F4BBEE89D6E451B9F68558 /* AssessmentEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63D6129FA903B78D2C3785 /* AssessmentEvaluator.swift */; };
+		595623E684948CBEA41D625F /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9360F4232FC87654B9ACFCA /* Views.swift */; };
+		737ABDF5CF4357C20EB4FDCF /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4C249A84DDA22683ACE2C /* AppRouter.swift */; };
+		C060316C6A6C70BA997BBD37 /* QuizScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09820BC2038276E306024C9E /* QuizScreen.swift */; };
+		C3E0980769E2A6FF72517CB0 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DF86CE72201D6DB634D4C /* QuizViewModel.swift */; };
+		C942B00D060EB34B2DE61D1C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE0FCB17C5F29BA76E124B1 /* HomeTabView.swift */; };
+		E3A98B9801E7F00FB631A6DC /* ResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8CF9FBA16ACB56B8AB5576 /* ResultScreen.swift */; };
+		F106375BCE775ACFDF00F232 /* AssessmentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8BB42DA04F55D26FDC1DF /* AssessmentModels.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		09820BC2038276E306024C9E /* QuizScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizScreen.swift; sourceTree = "<group>"; };
+		0B9C95D337F510B67A9C13B3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		2D63D6129FA903B78D2C3785 /* AssessmentEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentEvaluator.swift; sourceTree = "<group>"; };
+		3B0DF86CE72201D6DB634D4C /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		65ED9D216A41C0CE52A6DD73 /* 戦国武将診断.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "戦国武将診断.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D6E39B031C727626BB1ADD3 /* AssessmentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentRepository.swift; sourceTree = "<group>"; };
+		6FB4C249A84DDA22683ACE2C /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		7601EAF8E4F9452143D5CF04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9A8CF9FBA16ACB56B8AB5576 /* ResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreen.swift; sourceTree = "<group>"; };
+		9AE0FCB17C5F29BA76E124B1 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		BBF8BB42DA04F55D26FDC1DF /* AssessmentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentModels.swift; sourceTree = "<group>"; };
+		E9360F4232FC87654B9ACFCA /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		6E56884CA1F19A9A665848B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65ED9D216A41C0CE52A6DD73 /* 戦国武将診断.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7747472BDC43D5A79F3D805B = {
+			isa = PBXGroup;
+			children = (
+				9B2BDC4BE5785A4E0E547FBC /* 戦国武将診断 */,
+				6E56884CA1F19A9A665848B7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9B2BDC4BE5785A4E0E547FBC /* 戦国武将診断 */ = {
+			isa = PBXGroup;
+			children = (
+				6FB4C249A84DDA22683ACE2C /* AppRouter.swift */,
+				2D63D6129FA903B78D2C3785 /* AssessmentEvaluator.swift */,
+				BBF8BB42DA04F55D26FDC1DF /* AssessmentModels.swift */,
+				6D6E39B031C727626BB1ADD3 /* AssessmentRepository.swift */,
+				0B9C95D337F510B67A9C13B3 /* HomeScreen.swift */,
+				9AE0FCB17C5F29BA76E124B1 /* HomeTabView.swift */,
+				7601EAF8E4F9452143D5CF04 /* Info.plist */,
+				09820BC2038276E306024C9E /* QuizScreen.swift */,
+				3B0DF86CE72201D6DB634D4C /* QuizViewModel.swift */,
+				9A8CF9FBA16ACB56B8AB5576 /* ResultScreen.swift */,
+				E9360F4232FC87654B9ACFCA /* Views.swift */,
+			);
+			path = "戦国武将診断";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB69E8E4FFA30D2A862606C4 /* 戦国武将診断 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD77DDAF63962E21E8B97652 /* Build configuration list for PBXNativeTarget "戦国武将診断" */;
+			buildPhases = (
+				7585AD309D6599886B13A8ED /* Sources */,
+				5ECF6C263EF5C1C155FB6F10 /* Validate Assessment Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "戦国武将診断";
+			packageProductDependencies = (
+			);
+			productName = "戦国武将診断";
+			productReference = 65ED9D216A41C0CE52A6DD73 /* 戦国武将診断.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8B9AB0F164D568689DF2E3D0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = A20E4A13D4FC3D82BEA100C8 /* Build configuration list for PBXProject "戦国武将診断" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7747472BDC43D5A79F3D805B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB69E8E4FFA30D2A862606C4 /* 戦国武将診断 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5ECF6C263EF5C1C155FB6F10 /* Validate Assessment Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Resources/assessments",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)",
+			);
+			name = "Validate Assessment Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/validate_assessments.stamp",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -euo pipefail\nAPP_RES=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nDIAG_MIN_QUESTIONS=\"${DIAG_MIN_QUESTIONS:-3}\"\nCANDIDATES=(\n  \"${APP_RES}/assessments\"\n  \"${APP_RES}/Resources/assessments\"\n)\nADIR=\"\"\nfor d in \"${CANDIDATES[@]}\"; do [ -d \"$d\" ] && { ADIR=\"$d\"; break; }; done\nif [ -z \"$ADIR\" ]; then\n  echo \"[AS][WARN] assessments not found in app bundle, skipping validation\"\n  echo \"Candidates checked:\"\n  for d in \"${CANDIDATES[@]}\"; do echo \"  $d\"; done\n  exit 0\nfi\nshopt -s nullglob\nQFILES=( \"${ADIR}\"/diag_*_v*.json )\nRFILES=( \"${ADIR}\"/diag_*_results.json )\n[ ${#QFILES[@]} -ge 1 ] || { echo \"[AS][ERR] 質問ファイルがありません\"; exit 4; }\n[ ${#RFILES[@]} -ge 1 ] || { echo \"[AS][ERR] 結果ファイルがありません\"; exit 5; }\nif grep -rI -n $'\\xE2\\x80\\x9C\\|\\xE2\\x80\\x9D\\|\\xE2\\x80\\x98\\|\\xE2\\x80\\x99' \"${ADIR}\" >/dev/null; then\n  echo \"[AS][ERR] smart quotes detected\"; exit 6; fi\nfor f in \"${QFILES[@]}\"; do\n  echo \"[AS] Validate questions: $f\"\n  /usr/bin/python3 - <<'PY' \"$f\" \"$DIAG_MIN_QUESTIONS\" || { echo \"[AS][ERR] invalid questions JSON: $f\"; exit 7; }\nimport json,sys\nminc=int(sys.argv[2])\nwith open(sys.argv[1],'rb') as fp:\n    data=json.load(fp)\nassert isinstance(data, dict) and \"questions\" in data, \"questions配列がありません\"\nqs=data[\"questions\"]\nassert isinstance(qs, list) and len(qs) >= minc, f\"質問数 {len(qs)} < 最低 {minc}\"\nfor q in qs:\n    assert \"choices\" in q and len(q[\"choices\"])>=2, \"choices不足\"\n    for c in q[\"choices\"]:\n        assert \"weights\" in c and isinstance(c[\"weights\"], dict), \"weights欠落\"\nprint(\"[AS] OK questions count=\", len(qs))\nPY\ndone\nfor f in \"${RFILES[@]}\"; do\n  echo \"[AS] Validate results: $f\"\n  /usr/bin/python3 - <<'PY' \"$f\" || { echo \"[AS][ERR] invalid results JSON: $f\"; exit 8; }\nimport json,sys,re\nwith open(sys.argv[1],'rb') as fp:\n    data=json.load(fp)\nassert isinstance(data, dict) and \"profiles\" in data, \"profilesがありません\"\nprofiles=data[\"profiles\"]; assert isinstance(profiles, list) and len(profiles)>=1\nfor p in profiles:\n    assert \"id\" in p and \"name\" in p and \"formula\" in p, \"必須キー不足\"\n    assert re.match(r'^[0-9*+ IAPLJSC]+$', p[\"formula\"].replace(' ','')), \"formulaに無効文字\"\nprint(\"[AS] OK profiles=\", len(profiles))\nPY\ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7585AD309D6599886B13A8ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				737ABDF5CF4357C20EB4FDCF /* AppRouter.swift in Sources */,
+				49F4BBEE89D6E451B9F68558 /* AssessmentEvaluator.swift in Sources */,
+				F106375BCE775ACFDF00F232 /* AssessmentModels.swift in Sources */,
+				341FE99B57F8863F411C9E38 /* AssessmentRepository.swift in Sources */,
+				4189D8E625EFE82826A12D7D /* HomeScreen.swift in Sources */,
+				C942B00D060EB34B2DE61D1C /* HomeTabView.swift in Sources */,
+				C060316C6A6C70BA997BBD37 /* QuizScreen.swift in Sources */,
+				C3E0980769E2A6FF72517CB0 /* QuizViewModel.swift in Sources */,
+				E3A98B9801E7F00FB631A6DC /* ResultScreen.swift in Sources */,
+				595623E684948CBEA41D625F /* Views.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		15C0819CC1F89A3C7839EA37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2261A135A1B91EC7D46533B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ADS_ENABLED = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DIAG_MIN_QUESTIONS = 3;
+				INFOPLIST_FILE = "戦国武将診断/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.jp.apps.example.sengoku;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5DABDD4838CADDCA11084BAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		84FF126A8F23D64B0603381C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ADS_ENABLED = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DIAG_MIN_QUESTIONS = 3;
+				INFOPLIST_FILE = "戦国武将診断/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.jp.apps.example.sengoku;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A20E4A13D4FC3D82BEA100C8 /* Build configuration list for PBXProject "戦国武将診断" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15C0819CC1F89A3C7839EA37 /* Debug */,
+				5DABDD4838CADDCA11084BAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FD77DDAF63962E21E8B97652 /* Build configuration list for PBXNativeTarget "戦国武将診断" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84FF126A8F23D64B0603381C /* Debug */,
+				2261A135A1B91EC7D46533B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8B9AB0F164D568689DF2E3D0 /* Project object */;
+}
