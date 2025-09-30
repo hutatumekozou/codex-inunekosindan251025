@@ -4,6 +4,11 @@ struct HomeTabView: View {
     @StateObject private var router = AppRouter()
     @StateObject private var vm = QuizViewModel()
 
+    init() {
+        // 起動時に .car 検出ログを出す
+        print("[IMG] asset catalogs in bundle:", catalogBaseNamesInBundle())
+    }
+
     var body: some View {
         NavigationView {
             Group {
