@@ -23,6 +23,14 @@ targets:
         # User-Defined
         DIAG_MIN_QUESTIONS: 3
         ADS_ENABLED: NO
+    preBuildScripts:
+      - name: Copy Assessment Resources
+        script: |
+          set -e
+          DEST="${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+          mkdir -p "${DEST}/assessments"
+          rsync -a --delete "${SRCROOT}/Resources/assessments/" "${DEST}/assessments/"
+          echo "[COPY] assessments synced to ${DEST}/assessments"
     postCompileScripts:
       - name: Validate Assessment Resources
         script: |

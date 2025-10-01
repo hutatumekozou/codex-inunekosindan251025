@@ -3,37 +3,58 @@ import Foundation
 enum RepoError: Error { case notFound }
 
 final class AssessmentRepository {
+
+    // 探索候補を網羅
+    private static func candidateURLs(for name: String) -> [URL] {
+        var urls: [URL] = []
+        let fm = FileManager.default
+
+        // 1) 明示のフォルダ参照
+        if let r = Bundle.main.resourceURL {
+            urls.append(r.appendingPathComponent("assessments").appendingPathComponent(name))
+            urls.append(r.appendingPathComponent("Resources/assessments").appendingPathComponent(name))
+        }
+        // 2) 直下リソース検索（フォルダ参照でない場合）
+        if let u = Bundle.main.url(forResource: (name as NSString).deletingPathExtension,
+                                   withExtension: (name as NSString).pathExtension),
+           fm.fileExists(atPath: u.path) { urls.append(u) }
+
+        // 3) バンドル内の総当たり（Debug時のみ）
+        #if DEBUG
+        if let base = Bundle.main.resourceURL,
+           let items = try? fm.subpathsOfDirectory(atPath: base.path) {
+            if let hit = items.first(where: { $0.hasSuffix("/"+name) || $0 == name }) {
+                urls.append(base.appendingPathComponent(hit))
+            }
+        }
+        #endif
+        return urls
+    }
+
+    private static func decode<T:Decodable>(_ url: URL, as type: T.Type) -> T? {
+        (try? Data(contentsOf: url)).flatMap { try? JSONDecoder().decode(T.self, from: $0) }
+    }
+
     static func loadQuestions(name: String) -> AssessmentDoc {
-        for base in bases() {
-            let url = base.appendingPathComponent(name)
-            if let data = try? Data(contentsOf: url),
-               let doc = try? JSONDecoder().decode(AssessmentDoc.self, from: data),
-               doc.questions.count >= 1 {
+        for url in candidateURLs(for: name) {
+            if let doc: AssessmentDoc = decode(url, as: AssessmentDoc.self) {
+                print("[Repo] questions loaded:", url.path, "count=\(doc.questions.count)")
                 return doc
             }
         }
-        print("[Repo] fallback questions used")
+        print("[Repo][FB] using fallback questions")
         return fallbackQuestions()
     }
 
     static func loadProfiles(name: String) -> ProfilesDoc {
-        for base in bases() {
-            let url = base.appendingPathComponent(name)
-            if let data = try? Data(contentsOf: url),
-               let doc = try? JSONDecoder().decode(ProfilesDoc.self, from: data),
-               doc.profiles.count >= 1 {
+        for url in candidateURLs(for: name) {
+            if let doc: ProfilesDoc = decode(url, as: ProfilesDoc.self) {
+                print("[Repo] profiles loaded:", url.path, "count=\(doc.profiles.count)")
                 return doc
             }
         }
-        print("[Repo] fallback profiles used")
+        print("[Repo][FB] using fallback profiles")
         return fallbackProfiles()
-    }
-
-    private static func bases() -> [URL] {
-        [
-            Bundle.main.resourceURL?.appendingPathComponent("assessments"),
-            Bundle.main.resourceURL?.appendingPathComponent("Resources/assessments")
-        ].compactMap{$0}
     }
 }
 

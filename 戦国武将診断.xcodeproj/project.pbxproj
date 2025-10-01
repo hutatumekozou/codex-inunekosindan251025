@@ -82,6 +82,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD77DDAF63962E21E8B97652 /* Build configuration list for PBXNativeTarget "戦国武将診断" */;
 			buildPhases = (
+				5D93B0D76A8779D0E44BFF2A /* Copy Assessment Resources */,
 				7585AD309D6599886B13A8ED /* Sources */,
 				5ECF6C263EF5C1C155FB6F10 /* Validate Assessment Resources */,
 				867C05DBA76CDA613D6D5640 /* Resources */,
@@ -137,6 +138,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5D93B0D76A8779D0E44BFF2A /* Copy Assessment Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Assessment Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nDEST=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nmkdir -p \"${DEST}/assessments\"\nrsync -a --delete \"${SRCROOT}/Resources/assessments/\" \"${DEST}/assessments/\"\necho \"[COPY] assessments synced to ${DEST}/assessments\"\n";
+		};
 		5ECF6C263EF5C1C155FB6F10 /* Validate Assessment Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
