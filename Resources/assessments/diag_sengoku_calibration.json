@@ -1,0 +1,23 @@
+{
+  "traitScale": {
+    "I": 0.5,
+    "A": 0.5,
+    "P": 0.5,
+    "L": 2.0,
+    "J": 0.591,
+    "S": 0.5,
+    "C": 0.5
+  },
+  "profileBonus": {
+    "nobunaga": -0.522,
+    "hideyoshi": -0.201,
+    "ieyasu": -0.321,
+    "yukimura": 0.206,
+    "kenshin": -0.046,
+    "shingen": 0.229,
+    "masamune": 0.225,
+    "motonari": 0.237,
+    "ishida": -0.099,
+    "shimazu": 0.291
+  }
+}

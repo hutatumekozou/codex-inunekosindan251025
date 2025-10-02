@@ -7,6 +7,25 @@ struct EvalResult {
 }
 
 final class AssessmentEvaluator {
+
+    // キャリブレーション読み込み（traitScale + profileBonus）
+    private static func loadCalibration() -> (traitScale: [String: Double], profileBonus: [String: Double]) {
+        let candidates = [
+            Bundle.main.resourceURL?.appendingPathComponent("assessments/diag_sengoku_calibration.json"),
+            Bundle.main.resourceURL?.appendingPathComponent("Resources/assessments/diag_sengoku_calibration.json")
+        ].compactMap{$0}
+        for url in candidates {
+            if let data = try? Data(contentsOf: url),
+               let j = try? JSONSerialization.jsonObject(with: data) as? [String:Any] {
+                let ts = j["traitScale"] as? [String:Double] ?? [:]
+                let pb = j["profileBonus"] as? [String:Double] ?? [:]
+                print("[Eval] calibration loaded:", url.lastPathComponent, "traitScale=\(ts.count), profileBonus=\(pb.count)")
+                return (ts, pb)
+            }
+        }
+        return ([:], [:])
+    }
+
     static func evaluate(answers: [String:Choice], doc: AssessmentDoc, profiles: ProfilesDoc) -> EvalResult? {
         var traits = Dictionary(uniqueKeysWithValues: doc.meta.traits.map{ ($0, 0) })
 
@@ -16,38 +35,41 @@ final class AssessmentEvaluator {
             }
         }
 
+        let calib = loadCalibration()
+        let scales = calib.traitScale
+        let bonuses = calib.profileBonus
+
         func score(_ formula: String) -> Int {
-            // very simple parser: "3*I + 2*A + 1*S"
-            let parts = formula.replacingOccurrences(of: " ", with: "").split(separator: "+")
-            return parts.reduce(0) { acc, term in
-                if let mul = term.split(separator:"*").first, let coef = Int(mul),
-                   let key = term.split(separator:"*").last {
-                    return acc + coef * (traits[String(key)] ?? 0)
+            let expr = formula.replacingOccurrences(of: " ", with: "")
+            return expr.split(separator: "+").reduce(0) { acc, term in
+                if term.contains("*") {
+                    let parts = term.split(separator:"*")
+                    let coef = Int(parts[0]) ?? 1
+                    let key  = String(parts[1])
+                    let base = traits[key] ?? 0
+                    let mul  = scales[key] ?? 1.0
+                    return acc + Int(Double(coef * base) * mul)
+                } else {
+                    let key = String(term)
+                    let base = traits[key] ?? 0
+                    let mul  = scales[key] ?? 1.0
+                    return acc + Int(Double(base) * mul)
                 }
-                return acc + (traits[String(term)] ?? 0)
             }
         }
 
-        var best: (Profile, Int)? = nil
+        var bests: [(Profile, Int)] = []
+        var bestV = Int.min
         for p in profiles.profiles {
-            let s = score(p.formula)
-            if best == nil || s > best!.1 {
-                best = (p, s)
-            } else if let b = best, s == b.1 {
-                // tie-break by highest trait order
-                for t in doc.meta.tiebreak {
-                    let bt = traits[t] ?? 0
-                    let pt = traits[t] ?? 0
-                    if pt > bt {
-                        best = (p, s)
-                        break
-                    }
-                    if pt < bt { break }
-                }
-            }
+            var s = score(p.formula)
+            // プロファイル別ボーナス（加点。整数化しやすく10倍）
+            let bonus = Int(round((bonuses[p.id] ?? 0.0) * 10.0))
+            s += bonus
+            if s > bestV { bestV = s; bests = [(p, s)] }
+            else if s == bestV { bests.append((p, s)) }
         }
-
-        guard let res = best else { return nil }
-        return EvalResult(profile: res.0, traitScores: traits, total: res.1)
+        // ランダム選出（同点）
+        guard let chosen = bests.randomElement()?.0 else { return nil }
+        return EvalResult(profile: chosen, traitScores: traits, total: bestV)
     }
 }

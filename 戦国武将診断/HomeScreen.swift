@@ -4,52 +4,66 @@ struct HomeScreen: View {
     var startAction: () -> Void
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                // ヘッダ画像：プレースホルダ（後で差し替え）
-                ZStack {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.gray.opacity(0.1))
-                    Text("メインビジュアル")
-                        .font(.headline)
-                        .foregroundStyle(.secondary)
-                }
-                .frame(height: 220)
-                .padding(.horizontal)
+        ZStack {
+            // 背景画像（全画面）
+            Image("AppHero")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea(.all)
 
+            // グラデーションオーバーレイ（文字を読みやすく）
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color.black.opacity(0.4),
+                    Color.black.opacity(0.1),
+                    Color.black.opacity(0.4)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea(.all)
+
+            // コンテンツ
+            VStack(spacing: 24) {
+                Spacer()
+
+                // タイトル
                 Text("戦国武将診断")
-                    .font(.system(size: 34, weight: .bold))
+                    .font(.system(size: 48, weight: .bold, design: .serif))
+                    .foregroundColor(.white)
+                    .shadow(color: .black.opacity(0.8), radius: 8, x: 0, y: 4)
+                    .padding(.top, 60)
 
+                Spacer()
+
+                // スタートボタン
                 Button {
                     startAction()
                 } label: {
-                    Text("診断スタート!!")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.pink)
+                    Text("診断スタート")
+                        .font(.system(size: 24, weight: .bold))
+                        .frame(maxWidth: 280)
+                        .padding(.vertical, 20)
+                        .background(
+                            LinearGradient(
+                                gradient: Gradient(colors: [Color.red.opacity(0.8), Color.orange.opacity(0.8)]),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
                         .foregroundColor(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 5)
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 40)
 
-                // 参考イメージ枠（小さな説明）
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [5]))
-                    .frame(height: 140)
-                    .overlay(
-                        Text("ここにミニ説明やイラスト")
-                            .foregroundStyle(.secondary)
-                    )
-                    .padding(.horizontal)
-
-                Text("※本アプリはエンタメ用途です。")
+                // 注意書き
+                Text("※本アプリはエンタメ用途です")
                     .font(.caption)
-                    .foregroundStyle(.secondary)
-
-                Spacer(minLength: 20)
+                    .foregroundColor(.white.opacity(0.8))
+                    .shadow(color: .black.opacity(0.6), radius: 4, x: 0, y: 2)
+                    .padding(.bottom, 40)
             }
-            .padding(.top, 24)
         }
     }
 }
