@@ -37,7 +37,6 @@ struct QuizScreen: View {
                             .font(.subheadline)
                             .foregroundColor(.white.opacity(0.7))
                     }
-                    .padding(.top, 20)
 
                     // 質問文
                     Text(q.text)
@@ -75,6 +74,7 @@ struct QuizScreen: View {
                     Spacer()
                 }
                 .padding(.horizontal, 24)
+                .questionTopInset(extra: 24)
             }
         } else {
             ZStack {

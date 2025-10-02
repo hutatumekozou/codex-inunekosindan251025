@@ -8,6 +8,9 @@ final class AdsManager: NSObject {
     private var interstitial: InterstitialAd?
     private var isLoading = false
 
+    // SDK started フラグ（start完了までロードしない）
+    static var isSDKStarted = false
+
     #if DEBUG
     private let adUnitID = "ca-app-pub-3940256099942544/4411468910" // テスト
     #else
@@ -15,6 +18,10 @@ final class AdsManager: NSObject {
     #endif
 
     func preload() {
+        guard AdsManager.isSDKStarted else {
+            print("[Ads] skip preload: SDK not started yet")
+            return
+        }
         guard !isLoading, interstitial == nil else { return }
         isLoading = true
         let request = Request()
@@ -33,8 +40,12 @@ final class AdsManager: NSObject {
         }
     }
 
-    /// 表示。閉じたら onClosed() を必ず呼ぶ
     func show(from rootVC: UIViewController, onClosed: @escaping () -> Void) {
+        guard AdsManager.isSDKStarted else {
+            print("[Ads] show skipped: SDK not started")
+            onClosed()
+            return
+        }
         if let ad = interstitial {
             print("[Ads] show interstitial")
             ad.present(from: rootVC)

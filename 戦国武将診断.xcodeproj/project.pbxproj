@@ -16,6 +16,7 @@
 		70FBC1976A931544E778FA61 /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF0695503F34B1310F8D2B /* AdsManager.swift */; };
 		737ABDF5CF4357C20EB4FDCF /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4C249A84DDA22683ACE2C /* AppRouter.swift */; };
 		7DD1B8DBB0A5125044485242 /* Image+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF5E45214C46D84F7AF697 /* Image+Safe.swift */; };
+		A70C5947263B601F2FD1C3BD /* QuestionTopInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D306EE3AE0CCE6646F3EDFA /* QuestionTopInset.swift */; };
 		A7589AB87EFDB8784764D8FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A195E940418795235E505F01 /* Assets.xcassets */; };
 		AB28133F07C373AAE6D8AFC1 /* QuizBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335F9B9C207280945579019 /* QuizBackground.swift */; };
 		BF50938DD004485EE37B1732 /* NavigationHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A606AE99C1B64DB32E1F3 /* NavigationHub.swift */; };
@@ -32,6 +33,7 @@
 		0B9C95D337F510B67A9C13B3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		0DE4F9089751E9A3C5F8CE01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D178919A6DE0D64B7B6E8F1 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		1D306EE3AE0CCE6646F3EDFA /* QuestionTopInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTopInset.swift; sourceTree = "<group>"; };
 		277A606AE99C1B64DB32E1F3 /* NavigationHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHub.swift; sourceTree = "<group>"; };
 		2D63D6129FA903B78D2C3785 /* AssessmentEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentEvaluator.swift; sourceTree = "<group>"; };
 		3B0DF86CE72201D6DB634D4C /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
@@ -113,9 +115,18 @@
 				3B0DF86CE72201D6DB634D4C /* QuizViewModel.swift */,
 				9A8CF9FBA16ACB56B8AB5576 /* ResultScreen.swift */,
 				E9360F4232FC87654B9ACFCA /* Views.swift */,
+				D490098FBA6F35639E5B8F7D /* Modifiers */,
 				84C96F39558B5099EA47694E /* Views */,
 			);
 			path = "戦国武将診断";
+			sourceTree = "<group>";
+		};
+		D490098FBA6F35639E5B8F7D /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				1D306EE3AE0CCE6646F3EDFA /* QuestionTopInset.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +254,7 @@
 				C942B00D060EB34B2DE61D1C /* HomeTabView.swift in Sources */,
 				7DD1B8DBB0A5125044485242 /* Image+Safe.swift in Sources */,
 				BF50938DD004485EE37B1732 /* NavigationHub.swift in Sources */,
+				A70C5947263B601F2FD1C3BD /* QuestionTopInset.swift in Sources */,
 				AB28133F07C373AAE6D8AFC1 /* QuizBackground.swift in Sources */,
 				C060316C6A6C70BA997BBD37 /* QuizScreen.swift in Sources */,
 				C3E0980769E2A6FF72517CB0 /* QuizViewModel.swift in Sources */,
