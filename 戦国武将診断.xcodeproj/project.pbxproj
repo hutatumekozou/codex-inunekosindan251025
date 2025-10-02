@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B44E99FCCFB63AE742E0B32 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D178919A6DE0D64B7B6E8F1 /* Color+Hex.swift */; };
 		341FE99B57F8863F411C9E38 /* AssessmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6E39B031C727626BB1ADD3 /* AssessmentRepository.swift */; };
 		4189D8E625EFE82826A12D7D /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9C95D337F510B67A9C13B3 /* HomeScreen.swift */; };
 		49F4BBEE89D6E451B9F68558 /* AssessmentEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63D6129FA903B78D2C3785 /* AssessmentEvaluator.swift */; };
 		595623E684948CBEA41D625F /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9360F4232FC87654B9ACFCA /* Views.swift */; };
+		6BE525F3699B91B62C6C58BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE4F9089751E9A3C5F8CE01 /* AppDelegate.swift */; };
+		70FBC1976A931544E778FA61 /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF0695503F34B1310F8D2B /* AdsManager.swift */; };
 		737ABDF5CF4357C20EB4FDCF /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4C249A84DDA22683ACE2C /* AppRouter.swift */; };
 		7DD1B8DBB0A5125044485242 /* Image+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF5E45214C46D84F7AF697 /* Image+Safe.swift */; };
 		A7589AB87EFDB8784764D8FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A195E940418795235E505F01 /* Assets.xcassets */; };
 		AB28133F07C373AAE6D8AFC1 /* QuizBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335F9B9C207280945579019 /* QuizBackground.swift */; };
+		BF50938DD004485EE37B1732 /* NavigationHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A606AE99C1B64DB32E1F3 /* NavigationHub.swift */; };
 		C060316C6A6C70BA997BBD37 /* QuizScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09820BC2038276E306024C9E /* QuizScreen.swift */; };
 		C3E0980769E2A6FF72517CB0 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DF86CE72201D6DB634D4C /* QuizViewModel.swift */; };
+		C7A76D8065FCABFC0064CE6F /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF9430E3524D11EDF2DB478 /* GoogleMobileAds */; };
 		C942B00D060EB34B2DE61D1C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE0FCB17C5F29BA76E124B1 /* HomeTabView.swift */; };
 		E3A98B9801E7F00FB631A6DC /* ResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8CF9FBA16ACB56B8AB5576 /* ResultScreen.swift */; };
 		F106375BCE775ACFDF00F232 /* AssessmentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8BB42DA04F55D26FDC1DF /* AssessmentModels.swift */; };
@@ -25,6 +30,9 @@
 /* Begin PBXFileReference section */
 		09820BC2038276E306024C9E /* QuizScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizScreen.swift; sourceTree = "<group>"; };
 		0B9C95D337F510B67A9C13B3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		0DE4F9089751E9A3C5F8CE01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1D178919A6DE0D64B7B6E8F1 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		277A606AE99C1B64DB32E1F3 /* NavigationHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHub.swift; sourceTree = "<group>"; };
 		2D63D6129FA903B78D2C3785 /* AssessmentEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentEvaluator.swift; sourceTree = "<group>"; };
 		3B0DF86CE72201D6DB634D4C /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		65ED9D216A41C0CE52A6DD73 /* 戦国武将診断.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "戦国武将診断.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,8 +45,20 @@
 		A335F9B9C207280945579019 /* QuizBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBackground.swift; sourceTree = "<group>"; };
 		A8FF5E45214C46D84F7AF697 /* Image+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Safe.swift"; sourceTree = "<group>"; };
 		BBF8BB42DA04F55D26FDC1DF /* AssessmentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentModels.swift; sourceTree = "<group>"; };
+		E3EF0695503F34B1310F8D2B /* AdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsManager.swift; sourceTree = "<group>"; };
 		E9360F4232FC87654B9ACFCA /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5724A1BF84EB3198CF424E4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7A76D8065FCABFC0064CE6F /* GoogleMobileAds in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		55BCC6311C7B25E9512FCB15 /* Modifiers */ = {
@@ -76,15 +96,19 @@
 		9B2BDC4BE5785A4E0E547FBC /* 戦国武将診断 */ = {
 			isa = PBXGroup;
 			children = (
+				E3EF0695503F34B1310F8D2B /* AdsManager.swift */,
+				0DE4F9089751E9A3C5F8CE01 /* AppDelegate.swift */,
 				6FB4C249A84DDA22683ACE2C /* AppRouter.swift */,
 				2D63D6129FA903B78D2C3785 /* AssessmentEvaluator.swift */,
 				BBF8BB42DA04F55D26FDC1DF /* AssessmentModels.swift */,
 				6D6E39B031C727626BB1ADD3 /* AssessmentRepository.swift */,
 				A195E940418795235E505F01 /* Assets.xcassets */,
+				1D178919A6DE0D64B7B6E8F1 /* Color+Hex.swift */,
 				0B9C95D337F510B67A9C13B3 /* HomeScreen.swift */,
 				9AE0FCB17C5F29BA76E124B1 /* HomeTabView.swift */,
 				A8FF5E45214C46D84F7AF697 /* Image+Safe.swift */,
 				7601EAF8E4F9452143D5CF04 /* Info.plist */,
+				277A606AE99C1B64DB32E1F3 /* NavigationHub.swift */,
 				09820BC2038276E306024C9E /* QuizScreen.swift */,
 				3B0DF86CE72201D6DB634D4C /* QuizViewModel.swift */,
 				9A8CF9FBA16ACB56B8AB5576 /* ResultScreen.swift */,
@@ -105,6 +129,7 @@
 				7585AD309D6599886B13A8ED /* Sources */,
 				5ECF6C263EF5C1C155FB6F10 /* Validate Assessment Resources */,
 				867C05DBA76CDA613D6D5640 /* Resources */,
+				5724A1BF84EB3198CF424E4D /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -112,6 +137,7 @@
 			);
 			name = "戦国武将診断";
 			packageProductDependencies = (
+				7CF9430E3524D11EDF2DB478 /* GoogleMobileAds */,
 			);
 			productName = "戦国武将診断";
 			productReference = 65ED9D216A41C0CE52A6DD73 /* 戦国武将診断.app */;
@@ -136,6 +162,9 @@
 			);
 			mainGroup = 7747472BDC43D5A79F3D805B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				53E3C349A14B25F276FEEC5A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
@@ -203,13 +232,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70FBC1976A931544E778FA61 /* AdsManager.swift in Sources */,
+				6BE525F3699B91B62C6C58BB /* AppDelegate.swift in Sources */,
 				737ABDF5CF4357C20EB4FDCF /* AppRouter.swift in Sources */,
 				49F4BBEE89D6E451B9F68558 /* AssessmentEvaluator.swift in Sources */,
 				F106375BCE775ACFDF00F232 /* AssessmentModels.swift in Sources */,
 				341FE99B57F8863F411C9E38 /* AssessmentRepository.swift in Sources */,
+				1B44E99FCCFB63AE742E0B32 /* Color+Hex.swift in Sources */,
 				4189D8E625EFE82826A12D7D /* HomeScreen.swift in Sources */,
 				C942B00D060EB34B2DE61D1C /* HomeTabView.swift in Sources */,
 				7DD1B8DBB0A5125044485242 /* Image+Safe.swift in Sources */,
+				BF50938DD004485EE37B1732 /* NavigationHub.swift in Sources */,
 				AB28133F07C373AAE6D8AFC1 /* QuizBackground.swift in Sources */,
 				C060316C6A6C70BA997BBD37 /* QuizScreen.swift in Sources */,
 				C3E0980769E2A6FF72517CB0 /* QuizViewModel.swift in Sources */,
@@ -400,6 +433,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		53E3C349A14B25F276FEEC5A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7CF9430E3524D11EDF2DB478 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 53E3C349A14B25F276FEEC5A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8B9AB0F164D568689DF2E3D0 /* Project object */;
 }

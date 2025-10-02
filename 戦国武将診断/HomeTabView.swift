@@ -35,12 +35,23 @@ struct HomeTabView: View {
                     }
 
                 case .result(let r):
-                    ResultScreen(result: r) {
-                        router.reset()
+                    ResultScreen(result: r, allProfiles: vm.profiles?.profiles ?? []) {
+                        // 広告を表示してからHOMEに戻る
+                        let goHome = {
+                            NotificationCenter.default.post(name: .goHome, object: nil)
+                        }
+                        if let vc = UIApplication.shared.topViewController {
+                            AdsManager.shared.show(from: vc, onClosed: goHome)
+                        } else {
+                            goHome()
+                        }
                     }
                 }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onReceive(NotificationCenter.default.publisher(for: .goHome)) { _ in
+            router.reset()
+        }
     }
 }

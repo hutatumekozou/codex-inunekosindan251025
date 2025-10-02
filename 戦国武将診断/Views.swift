@@ -2,6 +2,8 @@ import SwiftUI
 
 @main
 struct 戦国武将診断App: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
         WindowGroup {
             HomeTabView()

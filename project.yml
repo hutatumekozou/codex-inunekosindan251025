@@ -92,3 +92,9 @@ targets:
           - $(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)
         outputFiles:
           - $(DERIVED_FILE_DIR)/validate_assessments.stamp
+    dependencies:
+      - package: GoogleMobileAds
+packages:
+  GoogleMobileAds:
+    url: https://github.com/googleads/swift-package-manager-google-mobile-ads
+    branch: main

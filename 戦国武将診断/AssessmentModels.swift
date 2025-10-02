@@ -31,6 +31,9 @@ struct Profile: Codable {
     let formula: String
     let summary: String
     let tips: [String]?
+    let compatibility: [String]?
+    let luckyColorName: String?
+    let luckyColorHex: String?
 }
 
 struct ProfilesDoc: Codable {
