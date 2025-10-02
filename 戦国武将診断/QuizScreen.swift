@@ -8,20 +8,19 @@ struct QuizScreen: View {
         if let doc = vm.doc, vm.index < doc.questions.count {
             let q = doc.questions[vm.index]
             ZStack {
-                // 背景画像（全画面）
-                Image("QuizBackground")
+                // 背景画像（トリミングなし、scaledToFit）
+                Image("QuestionBG")
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
                     .ignoresSafeArea(.all)
 
-                // グラデーションオーバーレイ（文字を読みやすく）
+                // 可読性向上のため下部をほんのり暗くする
                 LinearGradient(
                     gradient: Gradient(colors: [
-                        Color.black.opacity(0.5),
-                        Color.black.opacity(0.3),
-                        Color.black.opacity(0.5)
+                        Color.black.opacity(0.0),
+                        Color.black.opacity(0.35)
                     ]),
-                    startPoint: .top,
+                    startPoint: .center,
                     endPoint: .bottom
                 )
                 .ignoresSafeArea(.all)
@@ -79,13 +78,13 @@ struct QuizScreen: View {
             }
         } else {
             ZStack {
-                // 背景画像（ローディング時も）
-                Image("QuizBackground")
+                // 背景画像（ローディング時も、トリミングなし）
+                Image("QuestionBG")
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
                     .ignoresSafeArea(.all)
 
-                Color.black.opacity(0.5)
+                Color.black.opacity(0.35)
                     .ignoresSafeArea(.all)
 
                 ProgressView()
