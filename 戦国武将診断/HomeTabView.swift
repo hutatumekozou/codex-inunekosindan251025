@@ -20,7 +20,7 @@ struct HomeTabView: View {
                             router.goQuiz()
                         })
                         .tabItem {
-                            Label("HOME", systemImage: "house.fill")
+                            EmptyView()
                         }
 
                         AboutScreen()

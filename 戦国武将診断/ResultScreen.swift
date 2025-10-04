@@ -86,10 +86,14 @@ struct ResultScreen: View {
                     if let colorName = result.profile.luckyColorName,
                        let colorHex = result.profile.luckyColorHex {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("ラッキーカラー")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .shadow(color: .black.opacity(0.8), radius: 4, x: 0, y: 2)
+                            HStack(alignment: .firstTextBaseline) {
+                                Text("ラッキーカラー")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .shadow(color: .black.opacity(0.8), radius: 4, x: 0, y: 2)
+                                Spacer()
+                                HomeBackButton()
+                            }
                             HStack(spacing: 8) {
                                 RoundedRectangle(cornerRadius: 4)
                                     .fill(Color(hex: colorHex) ?? .gray.opacity(0.3))
@@ -103,12 +107,6 @@ struct ResultScreen: View {
                         }
                         .padding(.top, 8)
                     }
-
-                    Button("HOMEに戻る") {
-                        onRestart()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .padding(.top, 8)
 
                     Text("※この診断結果はエンタメ用途です。実際の性格や能力を断定するものではありません。")
                         .font(.caption)

@@ -15,6 +15,7 @@ targets:
       path: 戦国武将診断/Info.plist
       properties:
         UILaunchScreen: {}
+        GADApplicationIdentifier: ca-app-pub-8365176591962448~8414163982
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: net.jp.apps.example.sengoku
