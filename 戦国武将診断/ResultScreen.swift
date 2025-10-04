@@ -60,10 +60,10 @@ struct ResultScreen: View {
                     // --- 今日の一手（単発表示） ---
                     TodayTipView(tip: result.profile.tips?.first)
 
-                    // --- 相性の良い武将 ---
+                    // --- 相性の良い侍 ---
                     if let comp = result.profile.compatibility, !comp.isEmpty {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("相性の良い武将")
+                            Text("相性の良い侍")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .shadow(color: .black.opacity(0.8), radius: 4, x: 0, y: 2)

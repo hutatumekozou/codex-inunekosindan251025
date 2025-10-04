@@ -28,7 +28,7 @@ struct HomeScreen: View {
                 Spacer()
 
                 // タイトル
-                Text("戦国武将診断")
+                Text("戦国大名診断")
                     .font(.system(size: 48, weight: .bold, design: .serif))
                     .foregroundColor(.white)
                     .shadow(color: .black.opacity(0.8), radius: 8, x: 0, y: 4)

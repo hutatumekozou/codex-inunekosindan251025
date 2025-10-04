@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "meta": {
-    "title": "戦国武将診断",
+    "title": "戦国大名診断",
     "traits": ["I","A","P","L","J","S","C"],
     "tiebreak": ["I","S","C","P","A","L","J"]
   },
