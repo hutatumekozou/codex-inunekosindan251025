@@ -1,18 +1,18 @@
-name: 戦国武将診断
+name: 犬猫度診断
 options:
   minimumXcodeGenVersion: 2.41.0
 targets:
-  戦国武将診断:
+  犬猫度診断:
     type: application
     platform: iOS
     deploymentTarget: "15.0"
     sources:
-      - 戦国武将診断
+      - 犬猫度診断
     resources:
       - path: Resources/assessments
         type: folder
     info:
-      path: 戦国武将診断/Info.plist
+      path: 犬猫度診断/Info.plist
       properties:
         UILaunchScreen: {}
         GADApplicationIdentifier: ca-app-pub-8365176591962448~8414163982

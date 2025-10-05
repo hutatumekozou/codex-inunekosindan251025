@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,7 +37,7 @@
 		277A606AE99C1B64DB32E1F3 /* NavigationHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHub.swift; sourceTree = "<group>"; };
 		2D63D6129FA903B78D2C3785 /* AssessmentEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentEvaluator.swift; sourceTree = "<group>"; };
 		3B0DF86CE72201D6DB634D4C /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
-		65ED9D216A41C0CE52A6DD73 /* 戦国武将診断.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "戦国武将診断.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65ED9D216A41C0CE52A6DD73 /* 犬猫度診断.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "犬猫度診断.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6E39B031C727626BB1ADD3 /* AssessmentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentRepository.swift; sourceTree = "<group>"; };
 		6FB4C249A84DDA22683ACE2C /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		7601EAF8E4F9452143D5CF04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		6E56884CA1F19A9A665848B7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65ED9D216A41C0CE52A6DD73 /* 戦国武将診断.app */,
+				65ED9D216A41C0CE52A6DD73 /* 犬猫度診断.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,7 +82,7 @@
 		7747472BDC43D5A79F3D805B = {
 			isa = PBXGroup;
 			children = (
-				9B2BDC4BE5785A4E0E547FBC /* 戦国武将診断 */,
+				9B2BDC4BE5785A4E0E547FBC /* 犬猫度診断 */,
 				6E56884CA1F19A9A665848B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,7 +95,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		9B2BDC4BE5785A4E0E547FBC /* 戦国武将診断 */ = {
+		9B2BDC4BE5785A4E0E547FBC /* 犬猫度診断 */ = {
 			isa = PBXGroup;
 			children = (
 				E3EF0695503F34B1310F8D2B /* AdsManager.swift */,
@@ -118,7 +118,7 @@
 				D490098FBA6F35639E5B8F7D /* Modifiers */,
 				84C96F39558B5099EA47694E /* Views */,
 			);
-			path = "戦国武将診断";
+			path = "犬猫度診断";
 			sourceTree = "<group>";
 		};
 		D490098FBA6F35639E5B8F7D /* Modifiers */ = {
@@ -132,9 +132,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CB69E8E4FFA30D2A862606C4 /* 戦国武将診断 */ = {
+		CB69E8E4FFA30D2A862606C4 /* 犬猫度診断 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FD77DDAF63962E21E8B97652 /* Build configuration list for PBXNativeTarget "戦国武将診断" */;
+			buildConfigurationList = FD77DDAF63962E21E8B97652 /* Build configuration list for PBXNativeTarget "犬猫度診断" */;
 			buildPhases = (
 				5D93B0D76A8779D0E44BFF2A /* Copy Assessment Resources */,
 				7585AD309D6599886B13A8ED /* Sources */,
@@ -146,12 +146,12 @@
 			);
 			dependencies = (
 			);
-			name = "戦国武将診断";
+			name = "犬猫度診断";
 			packageProductDependencies = (
 				7CF9430E3524D11EDF2DB478 /* GoogleMobileAds */,
 			);
 			productName = "戦国武将診断";
-			productReference = 65ED9D216A41C0CE52A6DD73 /* 戦国武将診断.app */;
+			productReference = 65ED9D216A41C0CE52A6DD73 /* 犬猫度診断.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -163,7 +163,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 			};
-			buildConfigurationList = A20E4A13D4FC3D82BEA100C8 /* Build configuration list for PBXProject "戦国武将診断" */;
+			buildConfigurationList = A20E4A13D4FC3D82BEA100C8 /* Build configuration list for PBXProject "犬猫度診断" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -176,11 +176,10 @@
 			packageReferences = (
 				53E3C349A14B25F276FEEC5A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CB69E8E4FFA30D2A862606C4 /* 戦国武将診断 */,
+				CB69E8E4FFA30D2A862606C4 /* 犬猫度診断 */,
 			);
 		};
 /* End PBXProject section */
@@ -342,6 +341,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.jp.apps.example.sengoku;
+				PRODUCT_NAME = "犬猫度診断";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -417,6 +417,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.jp.apps.example.sengoku;
+				PRODUCT_NAME = "犬猫度診断";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -426,7 +427,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A20E4A13D4FC3D82BEA100C8 /* Build configuration list for PBXProject "戦国武将診断" */ = {
+		A20E4A13D4FC3D82BEA100C8 /* Build configuration list for PBXProject "犬猫度診断" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15C0819CC1F89A3C7839EA37 /* Debug */,
@@ -435,7 +436,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		FD77DDAF63962E21E8B97652 /* Build configuration list for PBXNativeTarget "戦国武将診断" */ = {
+		FD77DDAF63962E21E8B97652 /* Build configuration list for PBXNativeTarget "犬猫度診断" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84FF126A8F23D64B0603381C /* Debug */,

@@ -48,14 +48,10 @@ struct HomeView: View {
     }
 
     func load() {
-        do {
-            self.doc = try AssessmentRepository.loadQuestions(name: "diag_sengoku_v1.json")
-            self.profiles = try AssessmentRepository.loadProfiles(name: "diag_sengoku_results.json")
-            self.index = 0
-            self.answers = [:]
-        } catch {
-            print("load error:", error)
-        }
+        self.doc = AssessmentRepository.loadQuestions(name: "diag_sengoku_v1.json")
+        self.profiles = AssessmentRepository.loadProfiles(name: "diag_sengoku_results.json")
+        self.index = 0
+        self.answers = [:]
     }
 }
 

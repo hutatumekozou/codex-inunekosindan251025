@@ -1,0 +1,13 @@
+{
+  "traitScale": {},
+  "pairBonus": {
+    "perfect_match": 0.0,
+    "complementary": 0.0,
+    "adventure_buddies": 0.0,
+    "peaceful_harmony": 0.0,
+    "creative_duo": 0.0
+  },
+  "simWeight": 0.6,
+  "compWeight": 0.4,
+  "perTraitWeight": {}
+}
