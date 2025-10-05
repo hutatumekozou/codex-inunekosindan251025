@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct DogCatQuizRootView: View {
+    @Environment(\.dismiss) var dismiss
     @State private var index = 0
     @State private var dog = 0
     @State private var cat = 0
@@ -11,13 +12,7 @@ struct DogCatQuizRootView: View {
             Group {
                 if finished {
                     let summary = DogCatScoringEngine.summarize(dog: dog, cat: cat)
-                    DogCatResultView(summary: summary) {
-                        // リセット
-                        index = 0
-                        dog = 0
-                        cat = 0
-                        finished = false
-                    }
+                    DogCatResultView(summary: summary)
                 } else {
                     DogCatQuestionView(
                         question: dogCatQuestions[index],
@@ -93,8 +88,8 @@ struct DogCatQuestionView: View {
 }
 
 struct DogCatResultView: View {
+    @Environment(\.dismiss) var dismiss
     let summary: ScoreSummary
-    let onRetry: () -> Void
 
     var body: some View {
         let profile = DogCatScoringEngine.profile(for: summary.tier)
@@ -138,14 +133,20 @@ struct DogCatResultView: View {
                 .background(Color.gray.opacity(0.05))
                 .cornerRadius(16)
 
-                Button("もう一度診断する") {
-                    onRetry()
+                Button {
+                    let goHome = { dismiss() }
+                    if let vc = UIApplication.shared.topViewController {
+                        AdsManager.shared.show(from: vc, onClosed: goHome)
+                    } else {
+                        goHome()
+                    }
+                } label: {
+                    Label("HOMEに戻る", systemImage: "house.fill")
+                        .labelStyle(.titleAndIcon)
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(12)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.small)
+                .font(.subheadline)
                 .padding(.top, 8)
             }
             .padding()

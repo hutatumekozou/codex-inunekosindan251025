@@ -3,7 +3,6 @@ import SwiftUI
 struct HomeScreen: View {
     var startAction: () -> Void
     @State private var showDogCatQuiz = false
-    @State private var showCompatQuiz = false
 
     var body: some View {
         ZStack {
@@ -81,29 +80,6 @@ struct HomeScreen: View {
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 5)
                     }
-
-                    // 相性診断ボタン
-                    Button {
-                        showCompatQuiz = true
-                    } label: {
-                        HStack {
-                            Text("💕")
-                            Text("相性診断")
-                                .font(.system(size: 20, weight: .bold))
-                        }
-                        .frame(maxWidth: 280)
-                        .padding(.vertical, 16)
-                        .background(
-                            LinearGradient(
-                                gradient: Gradient(colors: [Color.pink.opacity(0.8), Color.red.opacity(0.8)]),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .foregroundColor(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                        .shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 5)
-                    }
                 }
                 .padding(.horizontal, 40)
 
@@ -117,9 +93,6 @@ struct HomeScreen: View {
         }
         .sheet(isPresented: $showDogCatQuiz) {
             DogCatQuizRootView()
-        }
-        .sheet(isPresented: $showCompatQuiz) {
-            CompatHomeView()
         }
     }
 }
