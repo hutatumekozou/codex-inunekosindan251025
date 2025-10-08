@@ -1,80 +1,86 @@
+// MARK: - 9段階スコアリング
 import Foundation
 
 struct DogCatScoringEngine {
     static func summarize(dog: Int, cat: Int) -> ScoreSummary {
         let total = max(dog + cat, 1)
         var dogPct = Int(round(Double(dog) / Double(total) * 100.0))
-        var catPct = 100 - dogPct
+        dogPct = min(max(dogPct, 0), 100)
+        let catPct = 100 - dogPct
 
-        // 端数補正（例：四捨五入で101/99になるのを避ける）
-        if dogPct + catPct != 100 {
-            dogPct = min(max(dogPct, 0), 100)
-            catPct = 100 - dogPct
-        }
+        let t: DCTier9
+        if dogPct == 100 { t = .dog100 }
+        else if dogPct >= 81 { t = .dog81_99 }
+        else if dogPct >= 66 { t = .dog66_80 }
+        else if dogPct >= 51 { t = .dog51_65 }
+        else if dogPct == 50 { t = .fifty50 }
+        else if dogPct >= 35 { t = .cat51_65 }   // 犬35–49% = 猫51–65%
+        else if dogPct >= 20 { t = .cat66_80 }   // 犬20–34% = 猫66–80%
+        else if dogPct >= 1  { t = .cat81_99 }   // 犬1–19%  = 猫81–99%
+        else { t = .cat100 }                     // 犬0% = 猫100%
 
-        let tier: DogCatTier
-        if dogPct == 50 { tier = .fiftyFifty }
-        else if dogPct >= 90 { tier = .superDog }
-        else if dogPct >= 75 { tier = .dogStrong }
-        else if dogPct >= 60 { tier = .dogLight }
-        else if dogPct >= 40 { tier = .catLight }
-        else if dogPct >= 25 { tier = .catStrong }
-        else { tier = .superCat }
-
-        return ScoreSummary(dogPoints: dog, catPoints: cat, dogPercent: dogPct, catPercent: catPct, tier: tier)
+        return ScoreSummary(dogPoints: dog, catPoints: cat, dogPercent: dogPct, catPercent: catPct, tier: t)
     }
 
-    static func profile(for tier: DogCatTier) -> ResultProfile {
-        switch tier {
-        case .superDog:
-            return ResultProfile(
-                title: "超ドッグ",
-                subtitle: "陽気で忠実、みんなのムードメーカー",
-                description: "社交性と一体感を何より大切にするタイプ。明るく場を温め、困っている人がいれば即サポート。勢いに任せすぎず休息と境界線を持つとさらに魅力が引き立ちます。",
-                tips: "連絡の\"間\"を意識し、相手のペースにも配慮を。スケジュールに\"オフ時間\"を固定すると長続き。"
-            )
-        case .dogStrong:
-            return ResultProfile(
-                title: "ドッグ寄り（強）",
-                subtitle: "頼れるまとめ役、チームで輝く",
-                description: "人と協働しながら着実に前進。巻き込み力と誠実さのバランスが良いタイプ。時に一人時間でリセットできると、より安定した成果に繋がります。",
-                tips: "密なコミュニケーションに\"確認の一呼吸\"を。小さな達成でも称賛を言葉にすると◎。"
-            )
-        case .dogLight:
-            return ResultProfile(
-                title: "ややドッグ",
-                subtitle: "柔らかく社交的、空気を読んで動ける",
-                description: "明るさと協調性を持ちつつ、過度に群れない心地よい距離感。役割が明確なとき特に力を発揮します。",
-                tips: "参加と不参加の線引きを先に決めると消耗を防げる。朝のルーティンが推進力に。"
-            )
-        case .fiftyFifty:
-            return ResultProfile(
-                title: "ハイブリッド 50/50",
-                subtitle: "犬と猫の良いとこ取り",
-                description: "社交性とマイペースのバランスが絶妙。状況に応じて切り替えられる器用さが強み。チームでもソロでも成果を出せる万能型です。",
-                tips: "\"今日は犬/猫で行く\"とモードを宣言すると意思決定が速くなる。"
-            )
-        case .catLight:
-            return ResultProfile(
-                title: "ややキャット",
-                subtitle: "自律的で静かな集中力",
-                description: "必要な関わりは丁寧にしつつ、基本は自分のペースで高品質に仕上げるタイプ。過度な干渉がない環境で力を発揮します。",
-                tips: "在宅や静かな場所の確保を。こまめな進捗共有だけ意識すると誤解を防げる。"
-            )
-        case .catStrong:
-            return ResultProfile(
-                title: "キャット寄り（強）",
-                subtitle: "自由と探究のソリスト",
-                description: "深い没入と夜型ブーストで独創的なアウトプット。関わる相手を選ぶほど集中が増します。過負荷を避けるため境界線を明確に。",
-                tips: "\"返答する時間帯\"を先に伝えると楽。音・光・温度など環境最適化に投資を。"
-            )
-        case .superCat:
-            return ResultProfile(
-                title: "超キャット",
-                subtitle: "孤高のマイペース、芯の強さ",
-                description: "完全に自分のリズムで動くタイプ。静けさの中で最大火力を出します。社会的接点は選択的に、少数精鋭で十分。",
-                tips: "定期的に体内時計を整える\"リセット日\"を設けると体力・気力が安定。"
-            )
-        }
+    static func profile(for tier: DCTier9) -> ResultProfile {
+        return dcTemplates9[tier]!
     }
 }
+
+// MARK: - 9段階テンプレート定義
+let dcTemplates9: [DCTier9: ResultProfile] = [
+    .dog100: ResultProfile(
+        title: "究極ドッグ 100%",
+        subtitle: "太陽みたいな牽引力",
+        description: "場を明るくし、人を巻き込み続ける生粋のチームブースター。頼られるほど力を発揮。休む勇気を持てば長距離戦でも無敵。",
+        tips: "予定に\"強制オフ\"を固定／リアクション薄い相手にも間を置いて配慮／感謝を言葉と行動で。"
+    ),
+    .dog81_99: ResultProfile(
+        title: "ハイパードッグ",
+        subtitle: "頼れるムードメーカー",
+        description: "協働が得意で、調整力も高い。ガンガン進めつつ、時々ひとり時間でバッテリー回復できると安定感が段違い。",
+        tips: "要件は先に箇条書き共有／相手の境界線を尊重／小さな成功をみんなで祝う。"
+    ),
+    .dog66_80: ResultProfile(
+        title: "バランスドッグ",
+        subtitle: "社交×段取りの実務派",
+        description: "明るさと計画性のバランスが良い実行リーダー。役割が明確な時に特に強く、合意形成もスムーズ。",
+        tips: "参加/不参加の線引きを先に宣言／朝のミニルーティンで加速。"
+    ),
+    .dog51_65: ResultProfile(
+        title: "ライトドッグ",
+        subtitle: "寄り添い上手なチームプレイヤー",
+        description: "人と一緒が心地よいが、過密だと疲れやすい。適度な距離感を設計できれば長く心地よく成果を出せる。",
+        tips: "ミーティングは短く目的先出し／休憩と通知ミュートの時間帯を共有。"
+    ),
+    .fifty50: ResultProfile(
+        title: "ハイブリッド 50/50",
+        subtitle: "切替の達人",
+        description: "社交とマイペースを状況で自在に切替。多様なチームでの橋渡し役に最適。モード宣言で意思決定がさらに速くなる。",
+        tips: "今日は犬/猫モードと宣言／期待値と連絡頻度を先に合意。"
+    ),
+    .cat51_65: ResultProfile(
+        title: "ライトキャット",
+        subtitle: "静かな集中と誠実さ",
+        description: "自分のペースを大切にしつつ必要な関係は丁寧。作業環境が整うほど出力が安定。過干渉は苦手。",
+        tips: "進捗共有の\"頻度だけ\"合意／静かな作業ブロックを死守。"
+    ),
+    .cat66_80: ResultProfile(
+        title: "バランスキャット",
+        subtitle: "没入×合理の職人肌",
+        description: "深く考え、質で勝負するタイプ。相手を選び集中的に関わるほど成果が伸びる。会議は要点先出しが◎。",
+        tips: "返信可能時間を明確化／非同期のドキュメントコミュニケーションを活用。"
+    ),
+    .cat81_99: ResultProfile(
+        title: "ハイパーキャット",
+        subtitle: "自由と独創のソリスト",
+        description: "静けさの中で最大火力。こだわりを守ると品質が跳ねる。接点は少数精鋭でOK。雑音は徹底的に排除して吉。",
+        tips: "会議は短く目的→結論→依頼／通知を整理し深夜の集中を確保。"
+    ),
+    .cat100: ResultProfile(
+        title: "究極キャット 100%",
+        subtitle: "孤高のマイペース",
+        description: "完全に自分のリズムで動き、唯一無二の成果を生む。ルールは必要最低限でよいが、健康管理だけは仕組み化を。",
+        tips: "タスクは非同期で受け取り・締切逆算／体内時計のリセット日を固定。"
+    )
+]

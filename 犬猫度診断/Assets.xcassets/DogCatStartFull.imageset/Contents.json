@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "いぬ ねこ 診断 ホームが画面.001.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "いぬ ねこ 診断 ホームが画面.001 1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "いぬ ねこ 診断 ホームが画面.001 2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

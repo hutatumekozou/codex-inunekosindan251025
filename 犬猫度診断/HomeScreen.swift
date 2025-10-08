@@ -1,117 +1,113 @@
+// MARK: - 起動ホーム → 診断選択（確実遷移版）
 import SwiftUI
 
 struct HomeScreen: View {
-    var startAction: () -> Void
+    @State private var goSelection = false
+
+    var body: some View {
+        ZStack {
+            DogCatStartView {
+                print("[Home] start tapped")
+                goSelection = true
+            }
+
+            // 画面に存在する NavigationLink（不可視）
+            NavigationLink(
+                destination: QuizSelectionScreen(),
+                isActive: $goSelection
+            ) {
+                EmptyView()
+            }
+            .frame(width: 0, height: 0)
+            .opacity(0)
+            .accessibilityHidden(true)
+        }
+    }
+}
+
+// MARK: 診断選択 - 戦国診断を一時非表示
+struct QuizSelectionScreen: View {
+    @Environment(\.dismiss) var dismiss
+    // @State private var showSamuraiQuiz = false  // 戦国診断用（一時無効化）
     @State private var showDogCatQuiz = false
 
     var body: some View {
         ZStack {
-            // 背景画像（全画面）
-            Image("AppHero")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea(.all)
+            // 背景色
+            Color(red: 1.0, green: 0.965, blue: 0.917)
+                .ignoresSafeArea()
 
-            // グラデーションオーバーレイ（文字を読みやすく）
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color.black.opacity(0.4),
-                    Color.black.opacity(0.1),
-                    Color.black.opacity(0.4)
-                ]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea(.all)
-
-            // コンテンツ
-            VStack(spacing: 24) {
-                Spacer()
-
-                // タイトル
-                Text("戦国大名診断")
-                    .font(.system(size: 48, weight: .bold, design: .serif))
-                    .foregroundColor(.white)
-                    .shadow(color: .black.opacity(0.8), radius: 8, x: 0, y: 4)
+            VStack(spacing: 40) {
+                Text("診断を選んでください")
+                    .font(.title)
+                    .bold()
                     .padding(.top, 60)
 
                 Spacer()
 
-                VStack(spacing: 16) {
-                    // 戦国大名診断ボタン
-                    Button {
-                        startAction()
-                    } label: {
+                // MARK: 戦国大名診断ボタン - 一時非表示（戻すときはコメント解除）
+                /*
+                Button(action: {
+                    print("[DEBUG] 戦国大名診断ボタンがタップされました")
+                    showSamuraiQuiz = true
+                }) {
+                    VStack(spacing: 12) {
+                        Text("⚔️")
+                            .font(.system(size: 60))
                         Text("戦国大名診断")
-                            .font(.system(size: 20, weight: .bold))
-                            .frame(maxWidth: 280)
-                            .padding(.vertical, 16)
-                            .background(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [Color.red.opacity(0.8), Color.orange.opacity(0.8)]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                            .foregroundColor(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 5)
+                            .font(.title2)
+                            .bold()
+                        Text("あなたはどの戦国武将？")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
                     }
-
-                    // 犬猫度診断ボタン
-                    Button {
-                        showDogCatQuiz = true
-                    } label: {
-                        HStack {
-                            Text("🐶🐱")
-                            Text("犬猫度診断")
-                                .font(.system(size: 20, weight: .bold))
-                        }
-                        .frame(maxWidth: 280)
-                        .padding(.vertical, 16)
-                        .background(
-                            LinearGradient(
-                                gradient: Gradient(colors: [Color.blue.opacity(0.8), Color.purple.opacity(0.8)]),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .foregroundColor(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                        .shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 5)
-                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 40)
+                    .background(Color.white)
+                    .cornerRadius(20)
+                    .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
                 }
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 30)
+                */
 
-                // 注意書き
-                Text("※本アプリはエンタメ用途です")
-                    .font(.caption)
-                    .foregroundColor(.white.opacity(0.8))
-                    .shadow(color: .black.opacity(0.6), radius: 4, x: 0, y: 2)
-                    .padding(.bottom, 40)
+                // 犬猫度診断ボタン
+                Button(action: {
+                    print("[DEBUG] 犬猫度診断ボタンがタップされました")
+                    showDogCatQuiz = true
+                }) {
+                    VStack(spacing: 12) {
+                        Image("DogCatIcon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 100)
+                        Text("犬猫度診断")
+                            .font(.title2)
+                            .bold()
+                        Text("あなたはいぬタイプ？ねこタイプ？")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 40)
+                    .background(Color.white)
+                    .cornerRadius(20)
+                    .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
+                }
+                .padding(.horizontal, 30)
+
+                Spacer()
             }
+
+            // NavigationLinkを隠して配置
+            // NavigationLink(destination: QuizScreen(vm: QuizViewModel()) { result in
+            //     // 結果画面への遷移はAppRouterで管理
+            // }, isActive: $showSamuraiQuiz) { EmptyView() }
+            // .hidden()
+
+            NavigationLink(destination: DogCatQuizRootView(), isActive: $showDogCatQuiz) { EmptyView() }
+            .hidden()
         }
-        .sheet(isPresented: $showDogCatQuiz) {
-            DogCatQuizRootView()
-        }
+        .navigationBarHidden(true)
     }
 }
 
-struct AboutScreen: View {
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 12) {
-                Text("このアプリについて")
-                    .font(.title2)
-                    .bold()
-
-                Text("・本結果はエンタメ用途です。\n・歴史上の人物像は諸説あります。\n・個人の人格断定や差別的利用は禁止です。")
-
-                Text("バージョン：1.0")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-            .padding()
-        }
-    }
-}

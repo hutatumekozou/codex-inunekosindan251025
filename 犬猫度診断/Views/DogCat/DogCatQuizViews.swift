@@ -29,8 +29,8 @@ struct DogCatQuizRootView: View {
                     )
                 }
             }
-            .navigationTitle("犬猫度診断")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
     }
 }
@@ -41,49 +41,79 @@ struct DogCatQuestionView: View {
     let progressText: String
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text(progressText).font(.caption).foregroundColor(.secondary)
-
-            // プログレスバー
+        ZStack {
+            // 背景画像（下部に配置、犬猫が画面に収まるように）
             GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.gray.opacity(0.2))
-                        .frame(height: 8)
-
-                    let progress = Double(Int(progressText.split(separator: "/")[0].dropFirst()) ?? 1) / Double(dogCatQuestions.count)
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.blue)
-                        .frame(width: geometry.size.width * CGFloat(progress), height: 8)
-                }
+                Image("DogCatQuestionBG")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: geometry.size.width)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height - 310)
             }
-            .frame(height: 8)
-            .padding(.bottom, 8)
+            .ignoresSafeArea()
 
-            Text(question.text).font(.title3).bold().padding(.bottom, 8)
+            VStack(alignment: .leading, spacing: 16) {
+                Text(progressText).font(.caption).foregroundColor(.secondary)
 
-            ForEach(question.choices) { choice in
-                Button {
-                    onSelect(choice)
-                } label: {
-                    HStack {
-                        Text(choice.text)
-                            .foregroundColor(.primary)
-                            .multilineTextAlignment(.leading)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
+                // プログレスバー
+                GeometryReader { geometry in
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(Color.gray.opacity(0.2))
+                            .frame(height: 8)
+
+                        let progress = Double(Int(progressText.split(separator: "/")[0].dropFirst()) ?? 1) / Double(dogCatQuestions.count)
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(Color.blue)
+                            .frame(width: geometry.size.width * CGFloat(progress), height: 8)
                     }
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(12)
                 }
-                .buttonStyle(PlainButtonStyle())
+                .frame(height: 8)
+                .padding(.bottom, 8)
+
+                Text(question.text).font(.title3).bold().padding(.bottom, 8)
+
+                ForEach(question.choices) { choice in
+                    Button {
+                        onSelect(choice)
+                    } label: {
+                        HStack {
+                            Text(choice.text)
+                                .foregroundColor(.primary)
+                                .multilineTextAlignment(.leading)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                        }
+                        .padding()
+                        .background(Color.white.opacity(0.9))
+                        .cornerRadius(12)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+                Spacer()
             }
-            Spacer()
+            .padding()
         }
-        .padding()
+    }
+}
+
+// MARK: 犬猫結果: 1行インライン％表示（サイズ半分）
+struct InlineStat: View {
+    let emoji: String
+    let percent: Int
+    var body: some View {
+        HStack(spacing: 4) {
+            Text(emoji)
+                .font(.system(size: 14))
+            Text("\(percent)%")
+                .font(.system(size: 18, weight: .black))
+                .monospacedDigit()
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+        }
+        .frame(maxWidth: .infinity, alignment: .center) // 左右で等幅
     }
 }
 
@@ -95,25 +125,40 @@ struct DogCatResultView: View {
         let profile = DogCatScoringEngine.profile(for: summary.tier)
         ScrollView {
             VStack(spacing: 16) {
+                // MARK: 犬猫結果アイコン
+                if let name = dcResultImageName[summary.tier],
+                   let uiImg = UIImage(named: name) {
+                    Image(uiImage: uiImg)
+                       .resizable()
+                       .aspectRatio(contentMode: .fit)
+                       .frame(maxWidth: 260, maxHeight: 260)
+                       .accessibilityHidden(true)
+                }
+
                 Text(profile.title).font(.largeTitle).bold()
                 Text(profile.subtitle).font(.headline).foregroundColor(.secondary)
 
-                HStack(spacing: 20) {
-                    VStack {
-                        Text("🐶").font(.largeTitle)
-                        Text("\(summary.dogPercent)%").font(.title2).bold()
-                        Text("犬度").font(.caption).foregroundColor(.secondary)
-                    }
+                // MARK: 犬猫結果: ％サマリー（横1行・ラベルなし・小サイズ）
+                HStack(spacing: 0) {
+                    InlineStat(emoji: "🐶", percent: summary.dogPercent)
+                        .padding(.vertical, 8)
 
-                    VStack {
-                        Text("🐱").font(.largeTitle)
-                        Text("\(summary.catPercent)%").font(.title2).bold()
-                        Text("猫度").font(.caption).foregroundColor(.secondary)
-                    }
+                    Divider().frame(height: 22)
+
+                    InlineStat(emoji: "🐱", percent: summary.catPercent)
+                        .padding(.vertical, 8)
                 }
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(16)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 18)
+                .background(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(Color(.systemGray6))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .stroke(Color.black.opacity(0.06), lineWidth: 1)
+                )
+                .padding(.horizontal, 20)
 
                 VStack(alignment: .leading, spacing: 12) {
                     Text("診断結果")
@@ -150,6 +195,7 @@ struct DogCatResultView: View {
                 .padding(.top, 8)
             }
             .padding()
+            .offset(y: -14) // 0.5cm上に移動
         }
     }
 }
