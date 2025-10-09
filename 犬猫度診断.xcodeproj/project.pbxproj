@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -287,7 +287,6 @@
 			packageReferences = (
 				783E379C18FFD83ED89F3A16 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

@@ -12,7 +12,7 @@ final class AdsManager: NSObject {
   #if DEBUG
   private let adUnitID = "ca-app-pub-3940256099942544/4411468910" // Google公式テストID
   #else
-  private let adUnitID = "ca-app-pub-8365176591962448/2009549494"
+  private let adUnitID = "ca-app-pub-8365176591962448/5717408957"
   #endif
 
   func preload() {
