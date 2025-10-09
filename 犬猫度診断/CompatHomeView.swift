@@ -44,7 +44,7 @@ struct CompatHomeView: View {
                     }.padding(.horizontal)
                 }
                 if let r = result {
-                    if let img = Image.resolve(r.pairProfile.id) { img.resizable().scaledToFit().frame(maxHeight:220).cornerRadius(12) }
+                    if let uiImg = UIImage(named: r.pairProfile.id) { Image(uiImage: uiImg).resizable().scaledToFit().frame(maxHeight:220).cornerRadius(12) }
                     Text(r.pairProfile.name).font(.title).bold()
                     Text("相性スコア：\(r.scorePercent)%").font(.headline)
                     Text(r.pairProfile.summary)

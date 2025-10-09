@@ -10,7 +10,6 @@
 		0975FB715C8AC766B03DD978 /* ResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BEA3C2F38F570BA42951C /* ResultScreen.swift */; };
 		0B7F08ACA0FC61D42A8D634A /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BBA425FC094C169D6AD867 /* Color+Hex.swift */; };
 		1C5523C91F2B0FDF3C4FCFE1 /* QuizScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E747AB94DC970C7B117315 /* QuizScreen.swift */; };
-		2006AFD29E6C55269704590F /* Image+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640FB0FE0FED6EABFF00211E /* Image+Safe.swift */; };
 		28618581E9A88615A017F91A /* AssessmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2B0CCFC866F80FD281C8B /* AssessmentRepository.swift */; };
 		376B7CD9FDA7BD7B08077B57 /* CompatHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A5209B8CDB66915D3C8F1F /* CompatHomeView.swift */; };
 		3DC3C7F28ACD3957FADF4AED /* QuizBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB9ED9BB53FAFA6D6CA301 /* QuizBackground.swift */; };
@@ -22,6 +21,7 @@
 		70EAAF580BCD7C136DCAF4FA /* CompatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98AD303790CB9DA90A87E7 /* CompatModels.swift */; };
 		72E3241A16977AD48984869B /* HomeBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66D67709C2CCE2E905F6FDA /* HomeBackButton.swift */; };
 		78BB532BEB7532F547D3C603 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57952B4A958DF08FACA040CE /* AppRouter.swift */; };
+		7C57E74132097E311475A0EC /* Image+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706F71A43AC033BEA0049964 /* Image+Safe.swift */; };
 		89D51229D21D8BBC76C92A7D /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 95D59235A422D580D1FA4EFD /* GoogleMobileAds */; };
 		8B913F6ADC2F1D2A732C0323 /* DogCatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD56528540B25443AFD24BA /* DogCatData.swift */; };
 		8C181F3D28302C3761B132A6 /* CompatEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D67C9E43064B50F02BC370 /* CompatEvaluator.swift */; };
@@ -33,6 +33,8 @@
 		B3C240F311E8DE017E1969DA /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B74B5B5AAF53CFC56D78274 /* AdsManager.swift */; };
 		C04F0EF9AEBA0AD9C6FF8894 /* AssessmentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7572B1FAF5D66BA713F9F34 /* AssessmentModels.swift */; };
 		C955112D513558C226704564 /* NavigationHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14226EE38A94937E3BEDA1 /* NavigationHub.swift */; };
+		D187751C1E76F97FD95B5C3E /* HideNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3A816141A93A663AAC857 /* HideNavBar.swift */; };
+		DA03D58E731F07BAD06FDE9C /* DogCatFlowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51620646B2AFECC02B0D3E53 /* DogCatFlowContainer.swift */; };
 		DED069A9E1087E04124951E6 /* QuestionTopInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF0D030A7A802D0972119 /* QuestionTopInset.swift */; };
 		E04B7957E041928FEF03C321 /* AssessmentEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B6179FEE98FB9E56E217A9 /* AssessmentEvaluator.swift */; };
 		F050B8A7A85CDD8B4734C135 /* AdsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B330688401452406E75FF /* AdsConfig.swift */; };
@@ -46,11 +48,12 @@
 		38D67C9E43064B50F02BC370 /* CompatEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatEvaluator.swift; sourceTree = "<group>"; };
 		3BD56528540B25443AFD24BA /* DogCatData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCatData.swift; sourceTree = "<group>"; };
 		48ABF0D030A7A802D0972119 /* QuestionTopInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTopInset.swift; sourceTree = "<group>"; };
+		51620646B2AFECC02B0D3E53 /* DogCatFlowContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCatFlowContainer.swift; sourceTree = "<group>"; };
 		57952B4A958DF08FACA040CE /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		5EA3B966D732FF52E0B5712F /* DogCatQuizViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCatQuizViews.swift; sourceTree = "<group>"; };
-		640FB0FE0FED6EABFF00211E /* Image+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Safe.swift"; sourceTree = "<group>"; };
 		6DF5969E82BACC5D2E04DAFC /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		6E2AE0D5E7DA7D9B6DA59694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		706F71A43AC033BEA0049964 /* Image+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Safe.swift"; sourceTree = "<group>"; };
 		88F3D7485FB11FB0B0525A6D /* DogCatScoringEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCatScoringEngine.swift; sourceTree = "<group>"; };
 		8B1BEA3C2F38F570BA42951C /* ResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreen.swift; sourceTree = "<group>"; };
 		8EBB9ED9BB53FAFA6D6CA301 /* QuizBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBackground.swift; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 		E85E96565B1E20BFE9DFBB06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8E747AB94DC970C7B117315 /* QuizScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizScreen.swift; sourceTree = "<group>"; };
 		EBA018D24D94217704F587E6 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		F4E3A816141A93A663AAC857 /* HideNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNavBar.swift; sourceTree = "<group>"; };
 		F66D67709C2CCE2E905F6FDA /* HomeBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBackButton.swift; sourceTree = "<group>"; };
 		FFB12F144F052DE736CDA4CC /* DogCatStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCatStartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +89,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		058F7FDE65648F21A25CF0E9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				706F71A43AC033BEA0049964 /* Image+Safe.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2630AB0994DBEE0B4DE893D2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F4E3A816141A93A663AAC857 /* HideNavBar.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		3B4C685BCD8BCF372037A430 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +132,7 @@
 		57665F749E1FC3C9E95A06AB /* DogCat */ = {
 			isa = PBXGroup;
 			children = (
+				51620646B2AFECC02B0D3E53 /* DogCatFlowContainer.swift */,
 				5EA3B966D732FF52E0B5712F /* DogCatQuizViews.swift */,
 				FFB12F144F052DE736CDA4CC /* DogCatStartView.swift */,
 			);
@@ -167,7 +188,6 @@
 				9CD1F2722832811345888D03 /* CompatRepository.swift */,
 				16B7B4E8401CAE5FE1CF5AFC /* HomeScreen.swift */,
 				EBA018D24D94217704F587E6 /* HomeTabView.swift */,
-				640FB0FE0FED6EABFF00211E /* Image+Safe.swift */,
 				6E2AE0D5E7DA7D9B6DA59694 /* Info.plist */,
 				DF14226EE38A94937E3BEDA1 /* NavigationHub.swift */,
 				E8E747AB94DC970C7B117315 /* QuizScreen.swift */,
@@ -176,6 +196,7 @@
 				6DF5969E82BACC5D2E04DAFC /* Views.swift */,
 				50CC2D8748F5D84D13613D64 /* Components */,
 				B3C4C7FBB405A80DCDA65E44 /* Data */,
+				058F7FDE65648F21A25CF0E9 /* Extensions */,
 				F52EAB5F1C4403A83B26526E /* Logic */,
 				6A9AB7063CBFAF7C04BED8FE /* Models */,
 				502AA7D442DFB1132CEA8FF4 /* Modifiers */,
@@ -196,6 +217,7 @@
 		F2B4A146B2075C0D34D80593 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2630AB0994DBEE0B4DE893D2 /* Common */,
 				57665F749E1FC3C9E95A06AB /* DogCat */,
 				75C46F7F8307D426672234DB /* Modifiers */,
 			);
@@ -345,14 +367,16 @@
 				70EAAF580BCD7C136DCAF4FA /* CompatModels.swift in Sources */,
 				572EF59FD9E5F6803787F9B5 /* CompatRepository.swift in Sources */,
 				8B913F6ADC2F1D2A732C0323 /* DogCatData.swift in Sources */,
+				DA03D58E731F07BAD06FDE9C /* DogCatFlowContainer.swift in Sources */,
 				B24A774066AFDE9A2C6D8EDD /* DogCatModels.swift in Sources */,
 				6A9940E7BB58BF8363830966 /* DogCatQuizViews.swift in Sources */,
 				AFDA95C5C629E5E4B5A43F9E /* DogCatScoringEngine.swift in Sources */,
 				9BB380F7E7509ABF6404B6E6 /* DogCatStartView.swift in Sources */,
+				D187751C1E76F97FD95B5C3E /* HideNavBar.swift in Sources */,
 				72E3241A16977AD48984869B /* HomeBackButton.swift in Sources */,
 				F87169873058B63C5296AD6A /* HomeScreen.swift in Sources */,
 				478811B9EEA7ECD842DE682C /* HomeTabView.swift in Sources */,
-				2006AFD29E6C55269704590F /* Image+Safe.swift in Sources */,
+				7C57E74132097E311475A0EC /* Image+Safe.swift in Sources */,
 				C955112D513558C226704564 /* NavigationHub.swift in Sources */,
 				DED069A9E1087E04124951E6 /* QuestionTopInset.swift in Sources */,
 				3DC3C7F28ACD3957FADF4AED /* QuizBackground.swift in Sources */,

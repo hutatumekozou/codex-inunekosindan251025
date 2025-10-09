@@ -38,7 +38,7 @@ struct ResultScreen: View {
                     // --- ヒーロー画像（人物＋背景を同じ高さで表示） ---
                     ResultHeroView(
                         bgImageName: "QuestionBG",
-                        portrait: Image.resolve(assetName) ?? Image(systemName: "person.crop.circle")
+                        portrait: UIImage(named: assetName).map { Image(uiImage: $0) } ?? Image(systemName: "person.crop.circle")
                     )
 
                     Text("あなたに近いのは")
@@ -130,8 +130,8 @@ fileprivate struct ResultHeroView: View {
         ZStack(alignment: .center) {
             // 背景（人物と同じ高さ）
             Group {
-                if let name = bgImageName, let bg = Image.resolve(name) {
-                    bg
+                if let name = bgImageName, let uiImg = UIImage(named: name) {
+                    Image(uiImage: uiImg)
                         .resizable()
                         .scaledToFill()
                         .frame(height: H)

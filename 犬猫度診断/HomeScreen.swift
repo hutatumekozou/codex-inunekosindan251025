@@ -29,7 +29,7 @@ struct HomeScreen: View {
 struct QuizSelectionScreen: View {
     @Environment(\.dismiss) var dismiss
     // @State private var showSamuraiQuiz = false  // 戦国診断用（一時無効化）
-    @State private var showDogCatQuiz = false
+    @State private var showDogCatFlow = false
 
     var body: some View {
         ZStack {
@@ -73,7 +73,7 @@ struct QuizSelectionScreen: View {
                 // 犬猫度診断ボタン
                 Button(action: {
                     print("[DEBUG] 犬猫度診断ボタンがタップされました")
-                    showDogCatQuiz = true
+                    showDogCatFlow = true
                 }) {
                     VStack(spacing: 12) {
                         Image("DogCatIcon")
@@ -103,11 +103,15 @@ struct QuizSelectionScreen: View {
             //     // 結果画面への遷移はAppRouterで管理
             // }, isActive: $showSamuraiQuiz) { EmptyView() }
             // .hidden()
-
-            NavigationLink(destination: DogCatQuizRootView(), isActive: $showDogCatQuiz) { EmptyView() }
-            .hidden()
         }
         .navigationBarHidden(true)
+        // MARK: 犬猫診断フローを fullScreenCover で表示（Backボタン完全排除）
+        .fullScreenCover(isPresented: $showDogCatFlow) {
+            DogCatFlowContainer(onClose: {
+                showDogCatFlow = false
+            })
+            .interactiveDismissDisabled(true) // スワイプで閉じない
+        }
     }
 }
 

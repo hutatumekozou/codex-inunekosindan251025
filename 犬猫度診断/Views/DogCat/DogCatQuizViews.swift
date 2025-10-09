@@ -5,32 +5,48 @@ struct DogCatQuizRootView: View {
     @State private var index = 0
     @State private var dog = 0
     @State private var cat = 0
-    @State private var finished = false
+    @State private var lastSummary: ScoreSummary?
+    var onClose: () -> Void = {}
 
     var body: some View {
-        NavigationView {
-            Group {
-                if finished {
-                    let summary = DogCatScoringEngine.summarize(dog: dog, cat: cat)
-                    DogCatResultView(summary: summary)
+        DogCatQuestionView(
+            question: dogCatQuestions[index],
+            onSelect: { choice in
+                dog += choice.dog
+                cat += choice.cat
+                if index + 1 < dogCatQuestions.count {
+                    index += 1
                 } else {
-                    DogCatQuestionView(
-                        question: dogCatQuestions[index],
-                        onSelect: { choice in
-                            dog += choice.dog
-                            cat += choice.cat
-                            if index + 1 < dogCatQuestions.count {
-                                index += 1
-                            } else {
-                                finished = true
-                            }
-                        },
-                        progressText: "Q\(index+1)/\(dogCatQuestions.count)"
-                    )
+                    // MARK: 採点完了時
+                    print("[DogCat] 採点完了: dog=\(dog), cat=\(cat)")
+                    let summary = DogCatScoringEngine.summarize(dog: dog, cat: cat)
+                    print("[DogCat] summary作成: tier=\(summary.tier), dogPercent=\(summary.dogPercent)")
+                    lastSummary = summary
+                    print("[DogCat] lastSummaryセット完了")
                 }
+            },
+            progressText: "Q\(index+1)/\(dogCatQuestions.count)"
+        )
+        .hideNavBarCompletely()
+        // MARK: 結果表示: fullScreenCover（Backが絶対出ない）
+        .fullScreenCover(item: $lastSummary) { summary in
+            ZStack {
+                Color(red: 1.0, green: 0.965, blue: 0.917)
+                    .ignoresSafeArea()
+
+                DogCatResultView(
+                    summary: summary,
+                    onClose: {
+                        print("[DogCat] HOMEボタンタップ")
+                        lastSummary = nil
+                        onClose()
+                    }
+                )
             }
-            .navigationTitle("")
-            .navigationBarHidden(true)
+            .onAppear {
+                print("[DogCat] 結果画面が表示されました: tier=\(summary.tier)")
+            }
+            .interactiveDismissDisabled(true)
         }
     }
 }
@@ -96,6 +112,7 @@ struct DogCatQuestionView: View {
             }
             .padding()
         }
+        .hideNavBarCompletely()
     }
 }
 
@@ -119,7 +136,9 @@ struct InlineStat: View {
 
 struct DogCatResultView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
     let summary: ScoreSummary
+    var onClose: () -> Void = {}
 
     var body: some View {
         let profile = DogCatScoringEngine.profile(for: summary.tier)
@@ -179,11 +198,11 @@ struct DogCatResultView: View {
                 .cornerRadius(16)
 
                 Button {
-                    let goHome = { dismiss() }
+                    // MARK: HOMEボタン: 広告表示後に fullScreenCover を閉じてホームへ戻る
                     if let vc = UIApplication.shared.topViewController {
-                        AdsManager.shared.show(from: vc, onClosed: goHome)
+                        AdsManager.shared.show(from: vc, onClosed: onClose)
                     } else {
-                        goHome()
+                        onClose()
                     }
                 } label: {
                     Label("HOMEに戻る", systemImage: "house.fill")

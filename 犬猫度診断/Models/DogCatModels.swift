@@ -22,7 +22,8 @@ struct ResultProfile {
     let tips: String
 }
 
-struct ScoreSummary {
+struct ScoreSummary: Identifiable {
+    let id = UUID()
     let dogPoints: Int
     let catPoints: Int
     let dogPercent: Int
