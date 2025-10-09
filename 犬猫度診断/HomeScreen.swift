@@ -28,6 +28,7 @@ struct HomeScreen: View {
 // MARK: 診断選択 - 戦国診断を一時非表示
 struct QuizSelectionScreen: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
     // @State private var showSamuraiQuiz = false  // 戦国診断用（一時無効化）
     @State private var showDogCatFlow = false
 
@@ -109,6 +110,8 @@ struct QuizSelectionScreen: View {
         .fullScreenCover(isPresented: $showDogCatFlow) {
             DogCatFlowContainer(onClose: {
                 showDogCatFlow = false
+                // QuizSelectionScreenを閉じてHomeScreenに戻る
+                presentationMode.wrappedValue.dismiss()
             })
             .interactiveDismissDisabled(true) // スワイプで閉じない
         }
