@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04DDCA994F39945CDF6A0C14 /* Text+Compat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFA189036E3961B098778C3 /* Text+Compat.swift */; };
 		0975FB715C8AC766B03DD978 /* ResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BEA3C2F38F570BA42951C /* ResultScreen.swift */; };
 		0B7F08ACA0FC61D42A8D634A /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BBA425FC094C169D6AD867 /* Color+Hex.swift */; };
 		1C5523C91F2B0FDF3C4FCFE1 /* QuizScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E747AB94DC970C7B117315 /* QuizScreen.swift */; };
@@ -64,6 +65,7 @@
 		A9B6179FEE98FB9E56E217A9 /* AssessmentEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentEvaluator.swift; sourceTree = "<group>"; };
 		B7DA0ACF06793B1F060F0D14 /* DogCatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCatModels.swift; sourceTree = "<group>"; };
 		C732FC1A5622605BBC8D2D62 /* 犬猫度診断.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "犬猫度診断.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFA189036E3961B098778C3 /* Text+Compat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Compat.swift"; sourceTree = "<group>"; };
 		CDEB78A449F1A142384EA401 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		CE4E2BE6592BF39347B16F60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE7B330688401452406E75FF /* AdsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConfig.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				F4E3A816141A93A663AAC857 /* HideNavBar.swift */,
+				CBFA189036E3961B098778C3 /* Text+Compat.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			packageReferences = (
 				783E379C18FFD83ED89F3A16 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -382,6 +386,7 @@
 				1C5523C91F2B0FDF3C4FCFE1 /* QuizScreen.swift in Sources */,
 				5E872D85A6629988C0C1E2FA /* QuizViewModel.swift in Sources */,
 				0975FB715C8AC766B03DD978 /* ResultScreen.swift in Sources */,
+				04DDCA994F39945CDF6A0C14 /* Text+Compat.swift in Sources */,
 				596A8275BC957D1E51D15C7A /* Views.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

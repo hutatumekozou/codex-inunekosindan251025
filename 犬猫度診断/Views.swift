@@ -1,12 +1,39 @@
 import SwiftUI
 
+// MARK: 起動ルート修正 - 犬猫度診断に戻す
 @main
-struct 戦国武将診断App: App {
+struct InuNekoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
         WindowGroup {
             HomeTabView()
+                .onAppear { print("[App] HomeTabView started") }
+        }
+    }
+}
+
+struct BootstrapView: View {
+    @State private var tick = 0
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("ブートストラップ")
+                .font(.largeTitle)
+                .bold()
+            Text("tick=\(tick)")
+                .monospacedDigit() // MARK: monospaced fix - iOS 15互換
+            Button("診断UIへ切替") {
+                NotificationCenter.default.post(name: .init("GO_MAIN"), object: nil)
+            }
+        }
+        .padding()
+        .onAppear {
+            print("[BOOT] BootstrapView appeared")
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
+                tick += 1
+                print("[HB] \(tick)")
+            }
         }
     }
 }
