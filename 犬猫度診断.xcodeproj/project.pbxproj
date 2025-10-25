@@ -29,6 +29,7 @@
 		9BB380F7E7509ABF6404B6E6 /* DogCatStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB12F144F052DE736CDA4CC /* DogCatStartView.swift */; };
 		AD864B0D409AE5AEC7AA6D3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85E96565B1E20BFE9DFBB06 /* AppDelegate.swift */; };
 		AFDA95C5C629E5E4B5A43F9E /* DogCatScoringEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F3D7485FB11FB0B0525A6D /* DogCatScoringEngine.swift */; };
+		C6B6E80E1FDE6E2F00A1D4F2 /* CatQuizViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6E80C1FDE6E2F00A1D4F2 /* CatQuizViews.swift */; };
 		B1068054FD6C18A1902860A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4E2BE6592BF39347B16F60 /* Assets.xcassets */; };
 		B24A774066AFDE9A2C6D8EDD /* DogCatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DA0ACF06793B1F060F0D14 /* DogCatModels.swift */; };
 		B3C240F311E8DE017E1969DA /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B74B5B5AAF53CFC56D78274 /* AdsManager.swift */; };
@@ -52,6 +53,7 @@
 		51620646B2AFECC02B0D3E53 /* DogCatFlowContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCatFlowContainer.swift; sourceTree = "<group>"; };
 		57952B4A958DF08FACA040CE /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		5EA3B966D732FF52E0B5712F /* DogCatQuizViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCatQuizViews.swift; sourceTree = "<group>"; };
+		C6B6E80C1FDE6E2F00A1D4F2 /* CatQuizViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatQuizViews.swift; sourceTree = "<group>"; };
 		6DF5969E82BACC5D2E04DAFC /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		6E2AE0D5E7DA7D9B6DA59694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		706F71A43AC033BEA0049964 /* Image+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Safe.swift"; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 			path = DogCat;
 			sourceTree = "<group>";
 		};
+		C6B6E8101FDE6E2F00A1D4F2 /* CatQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				C6B6E80C1FDE6E2F00A1D4F2 /* CatQuizViews.swift */,
+			);
+			path = CatQuiz;
+			sourceTree = "<group>";
+		};
 		6A9AB7063CBFAF7C04BED8FE /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +232,7 @@
 			children = (
 				2630AB0994DBEE0B4DE893D2 /* Common */,
 				57665F749E1FC3C9E95A06AB /* DogCat */,
+				C6B6E8101FDE6E2F00A1D4F2 /* CatQuiz */,
 				75C46F7F8307D426672234DB /* Modifiers */,
 			);
 			path = Views;
@@ -373,6 +384,7 @@
 				DA03D58E731F07BAD06FDE9C /* DogCatFlowContainer.swift in Sources */,
 				B24A774066AFDE9A2C6D8EDD /* DogCatModels.swift in Sources */,
 				6A9940E7BB58BF8363830966 /* DogCatQuizViews.swift in Sources */,
+				C6B6E80E1FDE6E2F00A1D4F2 /* CatQuizViews.swift in Sources */,
 				AFDA95C5C629E5E4B5A43F9E /* DogCatScoringEngine.swift in Sources */,
 				9BB380F7E7509ABF6404B6E6 /* DogCatStartView.swift in Sources */,
 				D187751C1E76F97FD95B5C3E /* HideNavBar.swift in Sources */,

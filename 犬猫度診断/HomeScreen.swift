@@ -25,96 +25,93 @@ struct HomeScreen: View {
     }
 }
 
-// MARK: 診断選択 - 戦国診断を一時非表示
+// MARK: - 診断選択（犬猫 上 / ネコ 下）
 struct QuizSelectionScreen: View {
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.presentationMode) var presentationMode
-    // @State private var showSamuraiQuiz = false  // 戦国診断用（一時無効化）
-    @State private var showDogCatFlow = false
+    @State private var goDogCat = false
+    @State private var goCatOnly = false
 
     var body: some View {
-        ZStack {
-            // 背景色
-            Color(red: 1.0, green: 0.965, blue: 0.917)
-                .ignoresSafeArea()
-
-            VStack(spacing: 40) {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 24) {
                 Text("診断を選んでください")
-                    .font(.title)
-                    .bold()
-                    .padding(.top, 60)
+                    .font(.system(size: 28, weight: .heavy))
 
-                Spacer()
-
-                // MARK: 戦国大名診断ボタン - 一時非表示（戻すときはコメント解除）
-                /*
-                Button(action: {
-                    print("[DEBUG] 戦国大名診断ボタンがタップされました")
-                    showSamuraiQuiz = true
-                }) {
-                    VStack(spacing: 12) {
-                        Text("⚔️")
-                            .font(.system(size: 60))
-                        Text("戦国大名診断")
-                            .font(.title2)
-                            .bold()
-                        Text("あなたはどの戦国武将？")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 40)
-                    .background(Color.white)
-                    .cornerRadius(20)
-                    .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
+                SelectionCard(
+                    imageName: "DogCatIcon",
+                    title: "犬猫度診断",
+                    subtitle: "あなたはいぬタイプ？ ねこタイプ？"
+                ) {
+                    goDogCat = true
                 }
-                .padding(.horizontal, 30)
-                */
 
-                // 犬猫度診断ボタン
-                Button(action: {
-                    print("[DEBUG] 犬猫度診断ボタンがタップされました")
-                    showDogCatFlow = true
-                }) {
-                    VStack(spacing: 12) {
-                        Image("DogCatIcon")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 100)
-                        Text("犬猫度診断")
-                            .font(.title2)
-                            .bold()
-                        Text("あなたはいぬタイプ？ねこタイプ？")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 40)
-                    .background(Color.white)
-                    .cornerRadius(20)
-                    .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
+                SelectionCard(
+                    imageName: "CatOnlyCard",
+                    title: "ネコ度診断",
+                    subtitle: "あなたと相性ぴったりのネコがわかる♪"
+                ) {
+                    goCatOnly = true
                 }
-                .padding(.horizontal, 30)
-
-                Spacer()
             }
-
-            // NavigationLinkを隠して配置
-            // NavigationLink(destination: QuizScreen(vm: QuizViewModel()) { result in
-            //     // 結果画面への遷移はAppRouterで管理
-            // }, isActive: $showSamuraiQuiz) { EmptyView() }
-            // .hidden()
+            .padding(.horizontal, 20)
+            .padding(.top, 12)
+            .padding(.bottom, 40)
         }
-        .navigationBarHidden(true)
-        // MARK: 犬猫診断フローを fullScreenCover で表示（Backボタン完全排除）
-        .fullScreenCover(isPresented: $showDogCatFlow) {
-            DogCatFlowContainer(onClose: {
-                showDogCatFlow = false
-                // QuizSelectionScreenを閉じてHomeScreenに戻る
-                presentationMode.wrappedValue.dismiss()
-            })
-            .interactiveDismissDisabled(true) // スワイプで閉じない
-        }
+        .background(Color(uiColor: .systemGroupedBackground).ignoresSafeArea())
+        .background(
+            NavigationLink(
+                destination: DogCatQuizRootView(onClose: { goDogCat = false }),
+                isActive: $goDogCat
+            ) { EmptyView() }
+                .hidden()
+        )
+        .background(
+            NavigationLink(
+                destination: CatQuizRootView(onClose: { goCatOnly = false }),
+                isActive: $goCatOnly
+            ) { EmptyView() }
+                .hidden()
+        )
     }
 }
 
+// MARK: - 共通カード
+struct SelectionCard: View {
+    let imageName: String
+    let title: String
+    let subtitle: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 14) {
+                if let image = Image.dc_fromAssets(imageName) ?? Image.fromAssets(imageName) {
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 140)
+                        .clipped()
+                } else {
+                    Color.gray.opacity(0.1)
+                        .frame(height: 140)
+                        .overlay(
+                            Text("画像が見つかりません")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        )
+                }
+                Text(title)
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(Color(#colorLiteral(red: 0.0, green: 0.42, blue: 1.0, alpha: 1)))
+                Text(subtitle)
+                    .font(.system(size: 16, weight: .regular))
+                    .foregroundColor(.secondary)
+            }
+            .padding(.vertical, 22)
+            .frame(maxWidth: .infinity)
+            .background(Color.white)
+            .cornerRadius(24)
+            .shadow(color: Color.black.opacity(0.08), radius: 16, x: 0, y: 8)
+        }
+        .buttonStyle(.plain)
+    }
+}

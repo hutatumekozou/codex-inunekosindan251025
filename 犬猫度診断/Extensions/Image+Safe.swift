@@ -10,4 +10,9 @@ extension Image {
         #endif
         return nil
     }
+
+    // 既存コード互換用のエイリアス
+    static func dc_fromAssets(_ name: String) -> Image? {
+        fromAssets(name)
+    }
 }
