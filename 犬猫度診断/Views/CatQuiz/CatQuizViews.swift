@@ -13,17 +13,6 @@ enum CatType: String, CaseIterable {
         case .persian: return "ペルシャ"
         }
     }
-
-    var imageName: String {
-        switch self {
-        case .bengal:
-            return "cat_bengal_photo"
-        case .abyssinian:
-            return "cat_result_abyssinian"
-        default:
-            return "CatOnlyCard"
-        }
-    }
 }
 
 struct CatQuestion {
@@ -128,6 +117,16 @@ struct CatResultView: View {
     let answers: [Character]
     var onClose: () -> Void = {}
 
+    private let catResultImageName: [CatType: String] = [
+        .bengal: "cat_bengal_photo",
+        .abyssinian: "cat_result_abyssinian",
+        .siamese: "cat_result_siamese",
+        .americanShorthair: "cat_result_american_shorthair",
+        .scottishFold: "cat_result_scottish_fold",
+        .russianBlue: "cat_result_russian_blue",
+        .persian: "cat_result_persian"
+    ]
+
     private var sum: Int {
         answers.reduce(0) { partial, ch in
             switch ch {
@@ -167,12 +166,15 @@ struct CatResultView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 18) {
-                (Image.dc_fromAssets(type.imageName) ?? Image(type.imageName))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 260)
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .shadow(color: Color.black.opacity(0.12), radius: 10, x: 0, y: 6)
+                if let imageName = catResultImageName[type],
+                   let image = Image.dc_fromAssets(imageName) ?? Image(imageName) {
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 260)
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                        .shadow(color: Color.black.opacity(0.12), radius: 10, x: 0, y: 6)
+                }
 
                 Text(title).font(.largeTitle).bold()
                 Text(subtitle).foregroundColor(.secondary)
