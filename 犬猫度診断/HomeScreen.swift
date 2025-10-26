@@ -29,6 +29,7 @@ struct HomeScreen: View {
 struct QuizSelectionScreen: View {
     @State private var goDogCat = false
     @State private var goCatOnly = false
+    @State private var goDogOnly = false
 
     var body: some View {
         ScrollView {
@@ -51,6 +52,14 @@ struct QuizSelectionScreen: View {
                 ) {
                     goCatOnly = true
                 }
+
+                SelectionCard(
+                    imageName: "DogCatIcon",
+                    title: "イヌ度診断",
+                    subtitle: "あなたにぴったりなイヌタイプがわかる♪"
+                ) {
+                    goDogOnly = true
+                }
             }
             .padding(.horizontal, 20)
             .padding(.top, 12)
@@ -68,6 +77,13 @@ struct QuizSelectionScreen: View {
             NavigationLink(
                 destination: CatQuizRootView(onClose: { goCatOnly = false }),
                 isActive: $goCatOnly
+            ) { EmptyView() }
+                .hidden()
+        )
+        .background(
+            NavigationLink(
+                destination: DogQuizRootView(onClose: { goDogOnly = false }),
+                isActive: $goDogOnly
             ) { EmptyView() }
                 .hidden()
         )
