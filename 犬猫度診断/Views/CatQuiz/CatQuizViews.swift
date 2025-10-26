@@ -54,7 +54,7 @@ struct CatQuizRootView: View {
                 )
             }
         }
-        .navigationTitle("ネコ度診断")
+        .navigationTitle("あなたにピッタリのネコは")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     }
@@ -158,8 +158,6 @@ struct CatResultView: View {
     private var subtitle: String { CatQuizData.subtitle(for: type) }
     private var detail: String { CatQuizData.detail(for: type) }
 
-    private var catScorePercent: Int { CatQuizData.extroversionPercent(from: sum) }
-
     var body: some View {
         ScrollView {
             VStack(spacing: 18) {
@@ -175,12 +173,6 @@ struct CatResultView: View {
 
                 Text(title).font(.largeTitle).bold()
                 Text(subtitle).foregroundColor(.secondary)
-
-                HStack(spacing: 24) {
-                    Label("\(catScorePercent)%", systemImage: "pawprint.fill")
-                    Text("ネコ度")
-                }
-                .font(.headline)
 
                 VStack(alignment: .leading, spacing: 12) {
                     Text("診断結果").font(.title3).bold()
