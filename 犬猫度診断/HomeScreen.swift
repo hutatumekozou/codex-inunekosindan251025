@@ -84,8 +84,14 @@ struct SelectionCard: View {
     var body: some View {
         Button(action: action) {
             VStack(spacing: 14) {
-                if let image = Image.dc_fromAssets(imageName) ?? Image.fromAssets(imageName) {
+                if let image = Image.dc_fromAssets(imageName) {
                     image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 140)
+                        .clipped()
+                } else if let fallback = Image.fromAssets(imageName) {
+                    fallback
                         .resizable()
                         .scaledToFit()
                         .frame(height: 140)

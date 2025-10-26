@@ -158,17 +158,14 @@ struct CatResultView: View {
     private var subtitle: String { CatQuizData.subtitle(for: type) }
     private var detail: String { CatQuizData.detail(for: type) }
 
-    private var catScorePercent: Int {
-        let rate = max(0, min(100, Int(round(Double(sum - 20) / 60.0 * 100.0))))
-        return rate
-    }
+    private var catScorePercent: Int { CatQuizData.extroversionPercent(from: sum) }
 
     var body: some View {
         ScrollView {
             VStack(spacing: 18) {
-                if let imageName = catResultImageName[type],
-                   let image = Image.dc_fromAssets(imageName) ?? Image(imageName) {
-                    image
+                if let imageName = catResultImageName[type] {
+                    let resultImage = Image.dc_fromAssets(imageName) ?? Image.fromAssets(imageName)
+                    (resultImage ?? Image(systemName: "pawprint"))
                         .resizable()
                         .scaledToFit()
                         .frame(maxHeight: 260)
@@ -218,6 +215,38 @@ struct CatResultView: View {
 }
 
 enum CatQuizData {
+    private static let equalizedCuts: [Int] = [45, 47, 49, 51, 53, 55]
+
+    static func extroversionPercent(from totalScore: Int) -> Int {
+        let clamped = max(20, min(80, totalScore))
+        let percent = Double(clamped - 20) / 60.0 * 100.0
+        return Int(round(percent))
+    }
+
+    static func type(forSum sum: Int, countA: Int, countD: Int, countB: Int, countC: Int) -> CatType {
+        catBreedEqualized(from: sum)
+    }
+
+    private static func catBreedEqualized(from totalScore: Int) -> CatType {
+        let s = max(20, min(80, totalScore))
+        switch s {
+        case ...equalizedCuts[0]:
+            return .persian
+        case (equalizedCuts[0] + 1)...equalizedCuts[1]:
+            return .russianBlue
+        case (equalizedCuts[1] + 1)...equalizedCuts[2]:
+            return .scottishFold
+        case (equalizedCuts[2] + 1)...equalizedCuts[3]:
+            return .americanShorthair
+        case (equalizedCuts[3] + 1)...equalizedCuts[4]:
+            return .siamese
+        case (equalizedCuts[4] + 1)...equalizedCuts[5]:
+            return .abyssinian
+        default:
+            return .bengal
+        }
+    }
+
     static let questions: [CatQuestion] = [
         .init(text: "初対面でのあなたの距離感は？",
               options: ["すぐフレンドリーに話す","まず軽く雑談する","相手の様子を見てから","必要最低限だけ話す"]),
@@ -260,19 +289,6 @@ enum CatQuizData {
         .init(text: "一番リラックスする瞬間は？",
               options: ["仲間とワイワイ","友人とまったり","好きな作業に没頭","静かな一人時間"])
     ]
-
-    static func type(forSum sum: Int, countA: Int, countD: Int, countB: Int, countC: Int) -> CatType {
-        let rate = Double(sum - 20) / 60.0 * 100.0
-        switch rate {
-        case 85...100: return .bengal
-        case 75..<85:  return .abyssinian
-        case 65..<75:  return .siamese
-        case 55..<65:  return .americanShorthair
-        case 45..<55:  return .scottishFold
-        case 35..<45:  return .russianBlue
-        default:       return .persian
-        }
-    }
 
     static func subtitle(for type: CatType) -> String {
         switch type {
