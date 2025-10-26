@@ -215,8 +215,6 @@ struct CatResultView: View {
 }
 
 enum CatQuizData {
-    private static let equalizedCuts: [Int] = [45, 47, 49, 51, 53, 55]
-
     static func extroversionPercent(from totalScore: Int) -> Int {
         let clamped = max(20, min(80, totalScore))
         let percent = Double(clamped - 20) / 60.0 * 100.0
@@ -224,26 +222,26 @@ enum CatQuizData {
     }
 
     static func type(forSum sum: Int, countA: Int, countD: Int, countB: Int, countC: Int) -> CatType {
-        catBreedEqualized(from: sum)
+        catBreedFixedRange(from: sum)
     }
 
-    private static func catBreedEqualized(from totalScore: Int) -> CatType {
+    private static func catBreedFixedRange(from totalScore: Int) -> CatType {
         let s = max(20, min(80, totalScore))
         switch s {
-        case ...equalizedCuts[0]:
-            return .persian
-        case (equalizedCuts[0] + 1)...equalizedCuts[1]:
-            return .russianBlue
-        case (equalizedCuts[1] + 1)...equalizedCuts[2]:
-            return .scottishFold
-        case (equalizedCuts[2] + 1)...equalizedCuts[3]:
-            return .americanShorthair
-        case (equalizedCuts[3] + 1)...equalizedCuts[4]:
-            return .siamese
-        case (equalizedCuts[4] + 1)...equalizedCuts[5]:
-            return .abyssinian
-        default:
+        case 74...80:
             return .bengal
+        case 65...73:
+            return .abyssinian
+        case 56...64:
+            return .siamese
+        case 47...55:
+            return .americanShorthair
+        case 38...46:
+            return .scottishFold
+        case 29...37:
+            return .russianBlue
+        default:
+            return .persian
         }
     }
 
