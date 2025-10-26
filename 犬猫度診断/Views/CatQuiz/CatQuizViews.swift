@@ -13,6 +13,17 @@ enum CatType: String, CaseIterable {
         case .persian: return "ペルシャ"
         }
     }
+
+    var imageName: String {
+        switch self {
+        case .bengal:
+            return "cat_bengal_photo"
+        case .abyssinian:
+            return "cat_result_abyssinian"
+        default:
+            return "CatOnlyCard"
+        }
+    }
 }
 
 struct CatQuestion {
@@ -156,10 +167,12 @@ struct CatResultView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 18) {
-                (Image.dc_fromAssets("dc_result_cat66_80.png") ?? Image(systemName: "pawprint"))
+                (Image.dc_fromAssets(type.imageName) ?? Image(type.imageName))
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 200)
+                    .frame(maxHeight: 260)
+                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .shadow(color: Color.black.opacity(0.12), radius: 10, x: 0, y: 6)
 
                 Text(title).font(.largeTitle).bold()
                 Text(subtitle).foregroundColor(.secondary)
