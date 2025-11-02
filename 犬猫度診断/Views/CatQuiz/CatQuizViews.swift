@@ -186,7 +186,9 @@ struct CatResultView: View {
                 .cornerRadius(16)
 
                 Button {
-                    onClose()
+                    AdsManager.shared.show {
+                        onClose()
+                    }
                 } label: {
                     Label("HOMEに戻る", systemImage: "house.fill")
                         .font(.system(size: 17, weight: .semibold))

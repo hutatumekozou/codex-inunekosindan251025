@@ -199,9 +199,7 @@ struct DogCatResultView: View {
 
                 Button {
                     // MARK: HOMEボタン: 広告表示後に fullScreenCover を閉じてホームへ戻る
-                    if let vc = UIApplication.shared.topViewController {
-                        AdsManager.shared.show(from: vc, onClosed: onClose)
-                    } else {
+                    AdsManager.shared.show {
                         onClose()
                     }
                 } label: {

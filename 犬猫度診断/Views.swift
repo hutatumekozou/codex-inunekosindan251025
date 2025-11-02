@@ -2,13 +2,16 @@ import SwiftUI
 
 // MARK: 起動ルート修正 - 犬猫度診断に戻す
 @main
-struct InuNekoApp: App {
+struct 犬猫度診断App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
         WindowGroup {
             HomeTabView()
-                .onAppear { print("[App] HomeTabView started") }
+                .onAppear {
+                    print("[App] HomeTabView started")
+                    AdsManager.shared.preload()
+                }
         }
     }
 }

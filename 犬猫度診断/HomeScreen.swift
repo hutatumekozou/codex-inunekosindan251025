@@ -22,6 +22,9 @@ struct HomeScreen: View {
             .opacity(0)
             .accessibilityHidden(true)
         }
+        .onAppear {
+            AdsManager.shared.preload()
+        }
     }
 }
 
@@ -33,7 +36,7 @@ struct QuizSelectionScreen: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 16) {
                 Text("診断を選んでください")
                     .font(.system(size: 28, weight: .heavy))
 
@@ -99,22 +102,22 @@ struct SelectionCard: View {
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 14) {
+            VStack(spacing: 12) {
                 if let image = Image.dc_fromAssets(imageName) {
                     image
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 140)
+                        .frame(height: 96)
                         .clipped()
                 } else if let fallback = Image.fromAssets(imageName) {
                     fallback
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 140)
+                        .frame(height: 96)
                         .clipped()
                 } else {
                     Color.gray.opacity(0.1)
-                        .frame(height: 140)
+                        .frame(height: 96)
                         .overlay(
                             Text("画像が見つかりません")
                                 .font(.caption)
@@ -122,13 +125,13 @@ struct SelectionCard: View {
                         )
                 }
                 Text(title)
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 22, weight: .bold))
                     .foregroundColor(Color(#colorLiteral(red: 0.0, green: 0.42, blue: 1.0, alpha: 1)))
                 Text(subtitle)
-                    .font(.system(size: 16, weight: .regular))
+                    .font(.system(size: 15, weight: .regular))
                     .foregroundColor(.secondary)
             }
-            .padding(.vertical, 22)
+            .padding(.vertical, 16)
             .frame(maxWidth: .infinity)
             .background(Color.white)
             .cornerRadius(24)

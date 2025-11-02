@@ -3,11 +3,8 @@ import SwiftUI
 struct HomeBackButton: View {
     var body: some View {
         Button {
-            let goHome = { NotificationCenter.default.post(name: .goHome, object: nil) }
-            if let vc = UIApplication.shared.topViewController {
-                AdsManager.shared.show(from: vc, onClosed: goHome)
-            } else {
-                goHome()
+            AdsManager.shared.show {
+                NotificationCenter.default.post(name: .goHome, object: nil)
             }
         } label: {
             Label("HOMEに戻る", systemImage: "house.fill")
