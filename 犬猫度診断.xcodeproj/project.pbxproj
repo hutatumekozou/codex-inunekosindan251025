@@ -13,7 +13,7 @@
 		1C5523C91F2B0FDF3C4FCFE1 /* QuizScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E747AB94DC970C7B117315 /* QuizScreen.swift */; };
 		28618581E9A88615A017F91A /* AssessmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2B0CCFC866F80FD281C8B /* AssessmentRepository.swift */; };
 		376B7CD9FDA7BD7B08077B57 /* CompatHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A5209B8CDB66915D3C8F1F /* CompatHomeView.swift */; };
-		3DC3C7F28ACD3957FADF4AED /* QuizBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB9ED9BB53FAFA6D6CA301 /* QuizBackground.swift */; };
+		3DC3C7F28ACD3957FADF4AED /* View+QuizBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB9ED9BB53FAFA6D6CA301 /* View+QuizBackground.swift */; };
 		478811B9EEA7ECD842DE682C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA018D24D94217704F587E6 /* HomeTabView.swift */; };
 		572EF59FD9E5F6803787F9B5 /* CompatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD1F2722832811345888D03 /* CompatRepository.swift */; };
 		596A8275BC957D1E51D15C7A /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5969E82BACC5D2E04DAFC /* Views.swift */; };
@@ -36,6 +36,7 @@
 		CE0470FA00B466D9EB7ED345 /* DogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0D0BBE597D5CAB5F3ADC5B /* DogModels.swift */; };
 		BBA4A6D41A5665F1D01C8CB7 /* DogEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A781C3FBCE00A83BE516E /* DogEvaluator.swift */; };
 		35B78E88175527F6AD11979B /* DogQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED140650B8B774F51290BAB7 /* DogQuestions.swift */; };
+		F7C9B1E8D1F84CB3AEBB76D2 /* QuizBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D4F45AB9B64143B129C8F1 /* QuizBackground.swift */; };
 		B1068054FD6C18A1902860A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4E2BE6592BF39347B16F60 /* Assets.xcassets */; };
 		B24A774066AFDE9A2C6D8EDD /* DogCatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DA0ACF06793B1F060F0D14 /* DogCatModels.swift */; };
 		B3C240F311E8DE017E1969DA /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B74B5B5AAF53CFC56D78274 /* AdsManager.swift */; };
@@ -65,7 +66,8 @@
 		706F71A43AC033BEA0049964 /* Image+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Safe.swift"; sourceTree = "<group>"; };
 		88F3D7485FB11FB0B0525A6D /* DogCatScoringEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCatScoringEngine.swift; sourceTree = "<group>"; };
 		8B1BEA3C2F38F570BA42951C /* ResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreen.swift; sourceTree = "<group>"; };
-		8EBB9ED9BB53FAFA6D6CA301 /* QuizBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBackground.swift; sourceTree = "<group>"; };
+		8EBB9ED9BB53FAFA6D6CA301 /* View+QuizBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+QuizBackground.swift"; sourceTree = "<group>"; };
+		E4D4F45AB9B64143B129C8F1 /* QuizBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBackground.swift; sourceTree = "<group>"; };
 		97BBA425FC094C169D6AD867 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		9CD1F2722832811345888D03 /* CompatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatRepository.swift; sourceTree = "<group>"; };
 		9E98AD303790CB9DA90A87E7 /* CompatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatModels.swift; sourceTree = "<group>"; };
@@ -184,7 +186,7 @@
 		75C46F7F8307D426672234DB /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				8EBB9ED9BB53FAFA6D6CA301 /* QuizBackground.swift */,
+				8EBB9ED9BB53FAFA6D6CA301 /* View+QuizBackground.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -265,6 +267,7 @@
 				86105933B5F95A5BE749E52E /* Dog */,
 				C6B6E8101FDE6E2F00A1D4F2 /* CatQuiz */,
 				75C46F7F8307D426672234DB /* Modifiers */,
+				E4D4F45AB9B64143B129C8F1 /* QuizBackground.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -450,7 +453,8 @@
 				7C57E74132097E311475A0EC /* Image+Safe.swift in Sources */,
 				C955112D513558C226704564 /* NavigationHub.swift in Sources */,
 				DED069A9E1087E04124951E6 /* QuestionTopInset.swift in Sources */,
-				3DC3C7F28ACD3957FADF4AED /* QuizBackground.swift in Sources */,
+				3DC3C7F28ACD3957FADF4AED /* View+QuizBackground.swift in Sources */,
+				F7C9B1E8D1F84CB3AEBB76D2 /* QuizBackground.swift in Sources */,
 				1C5523C91F2B0FDF3C4FCFE1 /* QuizScreen.swift in Sources */,
 				5E872D85A6629988C0C1E2FA /* QuizViewModel.swift in Sources */,
 				0975FB715C8AC766B03DD978 /* ResultScreen.swift in Sources */,
@@ -588,6 +592,9 @@
 				DIAG_MIN_QUESTIONS = 3;
 				INFOPLIST_FILE = "犬猫度診断/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+				);
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,6 +615,9 @@
 				DIAG_MIN_QUESTIONS = 3;
 				INFOPLIST_FILE = "犬猫度診断/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+				);
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -647,8 +657,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.13.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

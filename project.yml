@@ -15,7 +15,7 @@ targets:
       path: 犬猫度診断/Info.plist
       properties:
         UILaunchScreen: {}
-        GADApplicationIdentifier: ca-app-pub-8365176591962448~8414163982
+        GADApplicationIdentifier: ca-app-pub-8365176591962448~5852623402
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: net.jp.apps.example.sengoku
@@ -24,6 +24,7 @@ targets:
         # User-Defined
         DIAG_MIN_QUESTIONS: 3
         ADS_ENABLED: NO
+        OTHER_LDFLAGS: "-ObjC"
     preBuildScripts:
       - name: Copy Assessment Resources
         script: |
@@ -98,4 +99,4 @@ targets:
 packages:
   GoogleMobileAds:
     url: https://github.com/googleads/swift-package-manager-google-mobile-ads
-    branch: main
+    from: 12.13.0

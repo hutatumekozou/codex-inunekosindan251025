@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/googleads/swift-package-manager-google-mobile-ads",
       "state" : {
-        "branch" : "main",
-        "revision" : "c79144a4a0a5bbc2019f9030af66d6573e348daf"
+        "revision" : "32c61bd35c10517bb9d1d28252af71fe7fd3d0c8",
+        "version" : "12.13.0"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git",
       "state" : {
-        "revision" : "69b53394c5258b3fe688e625a998047d1f393497",
-        "version" : "3.0.0"
+        "revision" : "13b248eaa73b7826f0efb1bcf455e251d65ecb1b",
+        "version" : "3.1.0"
       }
     }
   ],

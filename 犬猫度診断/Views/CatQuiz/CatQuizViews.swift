@@ -67,50 +67,69 @@ struct CatQuestionView: View {
     let onSelect: (Character) -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            Text("Q\(questionIndex+1)/\(total)")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .accessibilityLabel("Question \(questionIndex + 1) of \(total)")
+        ZStack {
+            QuizBackground()
 
-            ProgressView(value: Double(questionIndex + 1), total: Double(total))
-                .progressViewStyle(.linear)
-                .tint(Color(#colorLiteral(red: 0.0, green: 0.42, blue: 1.0, alpha: 1)))
-                .accessibilityHidden(true)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Q\(questionIndex+1)/\(total)")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .accessibilityLabel("Question \(questionIndex + 1) of \(total)")
 
-            Text(question.text)
-                .font(.title3).bold()
-                .padding(.top, 4)
+                    ProgressView(value: Double(questionIndex + 1), total: Double(total))
+                        .progressViewStyle(.linear)
+                        .tint(Color(#colorLiteral(red: 0.0, green: 0.42, blue: 1.0, alpha: 1)))
+                        .accessibilityHidden(true)
 
-            ForEach(Array(question.options.enumerated()), id: \.offset) { i, text in
-                let tag: Character = ["A", "B", "C", "D"][i]
-                Button {
-                    onSelect(tag)
-                } label: {
-                    HStack {
-                        Text(text).foregroundColor(.primary)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(.secondary)
+                    Text(question.text)
+                        .font(.title3).bold()
+                        .padding(.top, 4)
+
+                    ForEach(Array(question.options.enumerated()), id: \.offset) { i, text in
+                        let tag: Character = ["A", "B", "C", "D"][i]
+                        Button {
+                            onSelect(tag)
+                        } label: {
+                            HStack {
+                                Text(text).foregroundColor(.primary)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(14)
+                            .shadow(color: Color.black.opacity(0.06), radius: 8, x: 0, y: 4)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(14)
-                    .shadow(color: Color.black.opacity(0.06), radius: 8, x: 0, y: 4)
-                }
-                .buttonStyle(.plain)
-            }
 
-            Spacer()
+                    Spacer()
+                }
+                .padding(20)
+                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .background(Color.clear)
+            }
         }
-        .padding(20)
-        .background(
-            (Image.dc_fromAssets("DogCatQuestionBG") ?? Image("DogCatQuestionBG"))
-                .resizable()
-                .scaledToFill()
-                .opacity(0.10)
-        )
     }
+}
+
+#Preview {
+    CatQuestionView(
+        questionIndex: 0,
+        total: 20,
+        question: CatQuestion(
+            text: "初対面でのあなたの距離感は？",
+            options: [
+                "すぐフレンドリーに話す",
+                "まず軽く雑談する",
+                "相手の様子を見てから",
+                "必要最低限だけ話す"
+            ]
+        ),
+        onSelect: { _ in }
+    )
 }
 
 struct CatResultView: View {

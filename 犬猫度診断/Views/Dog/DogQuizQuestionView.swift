@@ -32,54 +32,53 @@ struct DogQuizQuestionView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text(questionProgressText)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .accessibilityLabel("Question \(index + 1) of \(questions.count)")
+        ZStack {
+            QuizBackground()
 
-            ProgressView(value: Double(index + 1), total: Double(questions.count))
-                .progressViewStyle(.linear)
-                .tint(Color.orange)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text(questionProgressText)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .accessibilityLabel("Question \(index + 1) of \(questions.count)")
 
-            Text(currentQuestion.text)
-                .font(.title3.weight(.bold))
-                .padding(.top, 4)
+                    ProgressView(value: Double(index + 1), total: Double(questions.count))
+                        .progressViewStyle(.linear)
+                        .tint(Color.orange)
 
-            VStack(spacing: 14) {
-                ForEach(currentQuestion.choices) { choice in
-                    Button {
-                        handleSelection(choice)
-                    } label: {
-                        HStack {
-                            Text(choice.text)
-                                .foregroundColor(.primary)
-                                .fixedSize(horizontal: false, vertical: true)
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.secondary)
+                    Text(currentQuestion.text)
+                        .font(.title3.weight(.bold))
+                        .padding(.top, 4)
+
+                    VStack(spacing: 14) {
+                        ForEach(currentQuestion.choices) { choice in
+                            Button {
+                                handleSelection(choice)
+                            } label: {
+                                HStack {
+                                    Text(choice.text)
+                                        .foregroundColor(.primary)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(16)
+                                .shadow(color: Color.black.opacity(0.06), radius: 8, x: 0, y: 4)
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(16)
-                        .shadow(color: Color.black.opacity(0.06), radius: 8, x: 0, y: 4)
                     }
-                    .buttonStyle(.plain)
-                }
-            }
 
-            Spacer(minLength: 16)
+                    Spacer(minLength: 16)
+                }
+                .padding(20)
+                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .background(Color.clear)
+            }
         }
-        .padding(20)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(
-            (Image.dc_fromAssets("DogCatQuestionBG") ?? Image("DogCatQuestionBG"))
-                .resizable()
-                .scaledToFill()
-                .opacity(0.10)
-                .ignoresSafeArea()
-        )
-        .background(Color(UIColor.secondarySystemBackground).ignoresSafeArea())
         .navigationBarBackButtonHidden(true)
         .fullScreenCover(isPresented: $showResult) {
             let total = dogTotalScore(answers)
@@ -99,4 +98,8 @@ struct DogQuizQuestionView: View {
             .interactiveDismissDisabled(true)
         }
     }
+}
+
+#Preview {
+    DogQuizQuestionView()
 }
